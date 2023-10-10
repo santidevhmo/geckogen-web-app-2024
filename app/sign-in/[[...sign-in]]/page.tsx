@@ -13,7 +13,6 @@ export default function SignInForm() {
               socialButtonsBlockButton: "p-4",
               formFieldInput: "p-4",
               formButtonPrimary: "p-4",
-              //bg-[#0076E4]
             }
           }}
           />
