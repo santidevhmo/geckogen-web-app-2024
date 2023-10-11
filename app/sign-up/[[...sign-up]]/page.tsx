@@ -3,8 +3,8 @@ import Link from "next/link";
  
 export default function SignUpForm() {
   return (
-    <div className="flex h-screen justify-center items-center bg-zinc-50">
-      <div className="flex flex-col justify-center items-center">
+    <div className="flex h-[55rem] justify-center items-center bg-zinc-50">
+      <div className="flex flex-col justify-center mt-10 items-center">
         <SignUp
           appearance={{
             elements: {
