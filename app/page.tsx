@@ -95,19 +95,19 @@ export default function Home() {
           </div>
         </div>
         <div className="flex justify-center py-10">
-          <div className="w-8/12 md:w-10/12 flex flex-wrap justify-center gap-10">
+          <div className="w-8/12 md:w-10/12 flex flex-wrap justify-center gap-5 gap-y-10">
             {/* Gecko 1 */}
             <Link href={"/"}>
-              <div className="bg-zinc-50 w-72 h-80 rounded-lg ease in duration-75 hover:-translate-y-3">
+              <div className="w-60 md:w-80 ease in duration-75 hover:-translate-y-3">
                 <div className="">
                   <img
-                    className="object-cover h-56 w-72 rounded-t-lg"
+                    className="object-cover h-56 w-72 md:h-80 md:w-80"
                     src="/featured-gecko-1.png"
                     alt=""
                   />
                 </div>
-                <div className="p-5">
-                  <p className="text-xl">Gecko LW C50</p>
+                <div className="pt-4">
+                  <p className="text-lg">Gecko LW C50</p>
                   <p className="text-md font-extrabold">$1,200.00</p>
                 </div>
               </div>
@@ -115,15 +115,15 @@ export default function Home() {
 
             {/* Gecko 2 */}
             <Link href={"/"}>
-              <div className="bg-zinc-50 w-72 h-80 rounded-lg ease in duration-75 hover:-translate-y-3">
+              <div className="w-60 md:w-80 ease in duration-75 hover:-translate-y-3">
                 <div className="">
                   <img
-                    className="object-cover h-56 w-72 rounded-t-lg"
+                    className="object-cover h-56 w-72 md:h-80 md:w-80"
                     src="/featured-gecko-2.png"
                     alt=""
                   />
                 </div>
-                <div className="p-5">
+                <div className="pt-4">
                   <p className="text-xl">Gecko Red Stripe G25</p>
                   <p className="text-md font-extrabold">$180.00</p>
                 </div>
@@ -132,15 +132,15 @@ export default function Home() {
 
             {/* Gecko 3 */}
             <Link href={"/"}>
-              <div className="bg-zinc-50 w-72 h-80 rounded-lg ease in duration-75 hover:-translate-y-3">
+              <div className="w-60 md:w-80 ease in duration-75 hover:-translate-y-3">
                 <div className="">
                   <img
-                    className="object-cover h-56 w-72 rounded-t-lg"
+                    className="object-cover h-56 w-72 md:h-80 md:w-80"
                     src="/featured-gecko-3.png"
                     alt=""
                   />
                 </div>
-                <div className="p-5">
+                <div className="pt-4">
                   <p className="text-xl">Gecko Xtreme C68</p>
                   <p className="text-md font-extrabold">$380.00</p>
                 </div>
