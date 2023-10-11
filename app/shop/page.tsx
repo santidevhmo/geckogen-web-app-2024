@@ -1,7 +1,10 @@
-export default function Dashboard() {
+import ShopHeader from "../components/ShopHeader/ShopHeader";
+
+export default function Shop() {
   return (
     <div className="h-screen">
-      <div className="pt-[20rem]">Welcome to Shop</div>
+      
+
     </div>
   );
 }

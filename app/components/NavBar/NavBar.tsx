@@ -1,11 +1,11 @@
 "use client"
 
-import HomeLogo from "./HomeLogo";
-import NavigationLinks from "./NavigationLinks";
-import AccessBttns from "./AccessBttns";
+import HomeLogo from "./utils/HomeLogo";
+import NavigationLinks from "./utils/NavigationLinks";
+import AccessBttns from "./utils/AccessBttns";
 import { UserButton, useUser } from "@clerk/nextjs";
-import HamburguerBttn from "./HamburguerBttn";
-import HamburguerMenu from "./HamburguerMenu";
+import HamburguerBttn from "./utils/HamburguerBttn";
+import HamburguerMenu from "./utils/HamburguerMenu";
 import { useState } from "react";
 
 const NavBar = () => {
