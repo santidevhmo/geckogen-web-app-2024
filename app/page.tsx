@@ -15,7 +15,7 @@ export default function Home() {
             <div className="whitespace-nowrap">
               <Link
                 className="py-2 px-4 mr-4 cursor-pointer rounded-full w-28 bg-blue-500 text-white lg:text-lg"
-                href={"/"}
+                href={"/shop"}
               >
                 Shop Now
               </Link>
@@ -151,7 +151,7 @@ export default function Home() {
         <div className="flex justify-center">
           <div>
             <Link
-              href={"/"}
+              href={"/shop"}
               className="py-2 px-4 mr-1 bg-blue-500 text-white rounded-full lg:text-lg"
             >
               Explore the catalogue

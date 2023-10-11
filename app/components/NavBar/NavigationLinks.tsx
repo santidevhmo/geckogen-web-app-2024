@@ -7,7 +7,7 @@ const NavigationLinks = () => {
         <li className="hover:text-blue-500"><Link href={"/"}>How it works</Link></li>
         <li className="hover:text-blue-500"><Link href={"/"}>About</Link></li>
         <li className="hover:text-blue-500"><Link href={"/"}>Care Sheet</Link></li>
-        <li className="hover:text-blue-500"><Link href={"/"}>Shop</Link></li>
+        <li className="hover:text-blue-500"><Link href={"/shop"}>Shop</Link></li>
         <li className="hover:text-blue-500"><Link href={"/"}>My Orders</Link></li>
         <li className="hover:text-blue-500"><Link href={"/"}>Contact</Link></li>
       </ul>
