@@ -13,7 +13,7 @@ const Accordion = (props: AccordionProps) => {
 
   return (
     <div className="w-72 mb-8">
-      <div className="border-b-2 pb-2">
+      <div className="border-b pb-2">
         <div className="flex justify-between items-center cursor-pointer" onClick={() => {setIsOpen(!isOpen)}}>
           <div className="flex-1">{title}</div>
           <div>
