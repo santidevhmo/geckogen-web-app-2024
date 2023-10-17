@@ -10,8 +10,8 @@ const FilterSideBar = () => {
       pl-10
       hidden 
       lg:block
-      lg:min-w-[25rem]
-      h-[45rem]
+      lg:min-w-[30rem]
+      h-[50rem]
       overflow-y-auto 
       overflow-x-hidden 
       pb-8">

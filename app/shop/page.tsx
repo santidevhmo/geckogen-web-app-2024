@@ -14,7 +14,6 @@ export default function Shop() {
   return (
     <div className="h-auto">
       <ShopHeader
-        showFilters={showFilters}
         showSideFilters={showSideFilters}
         setShowFilters={setShowFilters}
         setShowSideFilters={setShowSideFilters}

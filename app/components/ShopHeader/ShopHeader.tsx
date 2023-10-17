@@ -1,24 +1,17 @@
 import { Dispatch, SetStateAction } from "react";
 
 interface ShopHeaderProps {
-  showFilters: boolean;
   showSideFilters: boolean;
   setShowFilters: Dispatch<SetStateAction<boolean>>;
   setShowSideFilters: Dispatch<SetStateAction<boolean>>;
 }
 
 const ShopHeader = (props: ShopHeaderProps) => {
-  const { showFilters, showSideFilters, setShowFilters, setShowSideFilters } =
-    props;
-  const toggleFilters = () => {
-    setShowFilters(!showFilters);
-
+  const { showSideFilters, setShowFilters, setShowSideFilters } = props;
+  const showFilters = () => {
+    setShowFilters(true);
     // Toggle body scroll lock when the menu is open
-    if (showFilters) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "auto";
-    }
+    document.body.style.overflow = "hidden";
   };
 
   return (
@@ -29,7 +22,7 @@ const ShopHeader = (props: ShopHeaderProps) => {
       <div className="flex items-center gap-4 lg:hidden">
         <button
           className="flex gap-3 px-3 py-1 rounded-full border border-black"
-          onClick={toggleFilters}
+          onClick={showFilters}
         >
           Filters
           <img
