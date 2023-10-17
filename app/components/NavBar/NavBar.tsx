@@ -1,12 +1,12 @@
 "use client"
 
+import { useState, useEffect } from 'react'
 import HomeLogo from "./utils/HomeLogo";
 import NavigationLinks from "./utils/NavigationLinks";
 import AccessBttns from "./utils/AccessBttns";
 import { UserButton, useUser } from "@clerk/nextjs";
 import HamburguerBttn from "./utils/HamburguerBttn";
 import HamburguerMenu from "./utils/HamburguerMenu";
-import { useEffect, useState } from "react";
 
 const NavBar = () => {
   const { isLoaded, isSignedIn, user } = useUser();

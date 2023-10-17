@@ -14,7 +14,7 @@ const ShopHeader = (props: ShopHeaderProps) => {
     setShowFilters(!showFilters);
 
     // Toggle body scroll lock when the menu is open
-    if (!showFilters) {
+    if (showFilters) {
       document.body.style.overflow = "hidden";
     } else {
       document.body.style.overflow = "auto";

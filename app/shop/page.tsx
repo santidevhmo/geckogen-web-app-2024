@@ -1,9 +1,9 @@
 "use client";
 
+import { useState } from 'react';
 import ShopHeader from "../components/ShopHeader/ShopHeader";
 import Catalog from "../components/Catalog/Catalog";
 import FilterSideBar from "../components/Filters/FilterSideBar";
-import { useState } from "react";
 import FilterHeader from "../components/FilterHeader.tsx/FilterHeader";
 import FilterBar from "../components/Filters/FilterBar";
 
@@ -19,7 +19,7 @@ export default function Shop() {
         setShowFilters={setShowFilters}
         setShowSideFilters={setShowSideFilters}
       />
-      <div className="lg:flex lg:items-start lg:px-10 pt-[8.5rem]">
+      <div className="lg:flex lg:items-start pt-[8.5rem]">
         {showSideFilters && <FilterSideBar />}
         {showFilters && <FilterBar setShowFilters={setShowFilters} />}
         <div className="flex w-full justify-center mb-8">

@@ -3,7 +3,7 @@ import ProductCard from "../ProductCard/ProductCard";
 // This catalog must contain the products coming from db or stripe
 const Catalog = () => {
   return (
-    <div className="mt-1 grid grid-cols-2 lg:grid-cols-3 gap-x-1 lg:gap-x-2 gap-y-5">
+    <div className="lg:px-6 mt-1 grid grid-cols-2 lg:grid-cols-3 gap-x-1 lg:gap-x-2 gap-y-5">
       <ProductCard 
         productImage={"/gecko-shop-ideal.jpeg"} 
         productTitle={"Product 1"} 
