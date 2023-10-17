@@ -1,5 +1,11 @@
 const Loading = () => {
-  return <h1>Loading...</h1>;
+  return (
+    <div className="h-screen flex justify-center items-center">
+      <div>
+        <img className="animate-spin" src="/loading.png" alt="" />
+      </div>
+    </div>
+  );
 };
 
 export default Loading;
