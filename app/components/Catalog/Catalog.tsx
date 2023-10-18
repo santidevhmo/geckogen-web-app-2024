@@ -1,6 +1,12 @@
-import { useEffect, useState } from "react";
-import ProductCard from "../ProductCard/ProductCard";
+import { Suspense, useEffect, useState } from "react";
+// import ProductCard from "../ProductCard/ProductCard";
 import Stripe from "stripe";
+import ProductCardSkeleton from "../Skeleton/ProductCardSkeleton";
+import React from "react";
+
+const LazyProductCard = React.lazy(
+  () => import("../ProductCard/ProductCard")
+);
 
 const Catalog = () => {
   const [catalog, setCatalog] = useState<Stripe.Product[]>([]);
@@ -19,7 +25,6 @@ const Catalog = () => {
       });
 
       setCatalog(products.data);
-      console.log(catalog);
     };
 
     getCatalog();
@@ -40,11 +45,13 @@ const Catalog = () => {
       {catalog.map((product) => {
         const price = getPriceFromProduct(product);
         return (
-          <ProductCard
-            productImage={product.images[0]}
-            productTitle={product.name}
-            productPrice={(price?.unit_amount ?? 0) / 100}
-          />
+          <Suspense key={product.id} fallback={<ProductCardSkeleton />}>
+            <LazyProductCard
+              productImage={product.images[0]}
+              productTitle={product.name}
+              productPrice={(price?.unit_amount ?? 0) / 100}
+            />
+          </Suspense>
         );
       })}
     </div>
