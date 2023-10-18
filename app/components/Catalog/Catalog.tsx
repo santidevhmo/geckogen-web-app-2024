@@ -1,5 +1,4 @@
 import { Suspense, useEffect, useState } from "react";
-// import ProductCard from "../ProductCard/ProductCard";
 import Stripe from "stripe";
 import ProductCardSkeleton from "../Skeleton/ProductCardSkeleton";
 import React from "react";
