@@ -1,39 +1,54 @@
+import { useEffect, useState } from "react";
 import ProductCard from "../ProductCard/ProductCard";
+import Stripe from "stripe";
 
-// This catalog must contain the products coming from db or stripe
 const Catalog = () => {
+  const [catalog, setCatalog] = useState<Stripe.Product[]>([]);
+
+  useEffect(() => {
+    const getCatalog = async () => {
+      const stripe = new Stripe(
+        process.env.NEXT_PUBLIC_STRIPE_API_SECRET_KEY as string,
+        {
+          typescript: true,
+          apiVersion: "2023-10-16",
+        }
+      );
+      const products = await stripe.products.list({
+        expand: [`data.default_price`],
+      });
+
+      setCatalog(products.data);
+      console.log(catalog);
+    };
+
+    getCatalog();
+  }, []);
+
+  function getPriceFromProduct(
+    product: Stripe.Product
+  ): Stripe.Price | undefined {
+    if (product.default_price && typeof product.default_price === "object") {
+      // Check if default_price exists and is an object
+      return product.default_price as Stripe.Price;
+    }
+    return undefined;
+  }
+
   return (
     <div className="lg:px-6 mt-1 grid grid-cols-2 lg:grid-cols-3 gap-x-1 lg:gap-x-2 gap-y-5">
-      <ProductCard 
-        productImage={"/gecko-shop-ideal.jpeg"} 
-        productTitle={"Product 1"} 
-        productPrice={467.78}/>
-      <ProductCard 
-        productImage={"/gecko-shop-ideal3.jpeg"} 
-        productTitle={"Product 2"} 
-        productPrice={340.21}/>
-      <ProductCard 
-        productImage={"/gecko-shop-ideal4.jpeg"} 
-        productTitle={"Product 3"} 
-        productPrice={340.21}/>
-      <ProductCard 
-        productImage={"/gecko-shop-ideal3.jpeg"} 
-        productTitle={"Product 4"} 
-        productPrice={340.21}/>
-      <ProductCard 
-        productImage={"/gecko-shop-ideal.jpeg"} 
-        productTitle={"Product 5"} 
-        productPrice={467.78}/>
-      <ProductCard 
-        productImage={"/gecko-shop-ideal.jpeg"} 
-        productTitle={"Product 6"} 
-        productPrice={467.78}/>
-      <ProductCard 
-        productImage={"/gecko-shop-ideal4.jpeg"} 
-        productTitle={"Product 7"} 
-        productPrice={340.21}/>
+      {catalog.map((product) => {
+        const price = getPriceFromProduct(product);
+        return (
+          <ProductCard
+            productImage={product.images[0]}
+            productTitle={product.name}
+            productPrice={(price?.unit_amount ?? 0) / 100}
+          />
+        );
+      })}
     </div>
-  )
-}
+  );
+};
 
 export default Catalog;
