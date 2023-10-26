@@ -46,6 +46,7 @@ const Catalog = () => {
         return (
           <Suspense key={product.id} fallback={<ProductCardSkeleton />}>
             <LazyProductCard
+              productId={product.id}
               productImage={product.images[0]}
               productTitle={product.name}
               productPrice={(price?.unit_amount ?? 0) / 100}
