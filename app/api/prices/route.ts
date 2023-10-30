@@ -11,7 +11,5 @@ export async function GET(request: NextRequest, response: NextResponse) {
     expand: [`data.default_price`]
   });
 
-  console.log(prices);
-
   return NextResponse.json(prices.data)
 }

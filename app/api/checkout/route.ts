@@ -6,13 +6,15 @@ const stripe = new Stripe(process.env.NEXT_PUBLIC_STRIPE_API_SECRET_KEY as strin
   apiVersion: "2023-10-16"
 })
 
-export async function POST() {
+export async function POST(req: NextRequest) {
+  const { priceId } = await req.json()
+
   const session = await stripe.checkout.sessions.create({
     ui_mode: 'embedded',
     line_items: [
       {
         // Provide the exact Price ID (for example, pr_1234) of the product you want to sell
-        price: 'price_1O21ikAJTeML29ZUFBpoFvD0',
+        price: priceId,
         quantity: 1,
       },
     ],

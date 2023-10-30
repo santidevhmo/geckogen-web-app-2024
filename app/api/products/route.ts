@@ -1,4 +1,3 @@
-import { NextApiRequest, NextApiResponse } from "next";
 import { NextRequest, NextResponse } from "next/server";
 import { Stripe } from "stripe";
 
@@ -12,9 +11,15 @@ export async function GET(req: NextRequest, res: NextResponse) {
   const product = await stripe.products.retrieve(
     productId
   );
+  const price = await stripe.prices.retrieve(
+    product.default_price as string
+  )
 
   return NextResponse.json({
     productName: product.name,
+    productPrice: price.unit_amount,
+    productPriceId: price.id,
+    productImage: product.images,
     productDescription: product.description
   })
 }

@@ -7,7 +7,8 @@ export default authMiddleware({
       publicRoutes: ["/","/shop", "/api/prices", 
                      "/api/checkout", "/checkout", 
                      "/return", "/shop/product/:id", 
-                     "/api/products", "/shop/product/api/products"]
+                     "/api/products", "/shop/product/api/products",
+                     "/checkout/:id"]
 });
  
 export const config = {
