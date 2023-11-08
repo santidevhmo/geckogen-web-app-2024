@@ -9,7 +9,7 @@ interface AccordionProps {
 const Accordion = (props: AccordionProps) => {
   const { title, content } = props;
 
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(true);
 
   return (
     <div className="mb-8">
