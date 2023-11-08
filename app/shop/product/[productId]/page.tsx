@@ -43,7 +43,7 @@ const Product = ({ params }: { params: { productId: string } }) => {
 
           <div>
             <img
-              className="w-full object-cover"
+              className="w-full object-cover rounded-lg"
               src={product.productImage[0]}
               alt=""
             />
