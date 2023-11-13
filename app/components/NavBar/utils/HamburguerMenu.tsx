@@ -41,7 +41,7 @@ const HamburguerMenu = (props: HamburguerMenuProps) => {
             <div>
               <Link
                 href={"/"}
-                className="py-2 px-4 mr-1 bg-black text-white rounded-full"
+                className="py-2 px-4 border border-black rounded-full"
                 onClick={() => setToggle(false)}
               >
                 Sign Out
