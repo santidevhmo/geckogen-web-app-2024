@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useFiltersContext } from "../Filters/FiltersContext";
 
 interface AccordionProps {
   title: string;
@@ -8,8 +9,18 @@ interface AccordionProps {
 }
 const Accordion = (props: AccordionProps) => {
   const { title, content } = props;
+  const { selectedFilters, setSelectedFilters } = useFiltersContext();
 
   const [isOpen, setIsOpen] = useState(true);
+
+  const handleFilterButtonClick = (selectedFilter: string) => {
+    if (selectedFilters.includes(selectedFilter)) {
+      let filters = selectedFilters.filter((el) => el !== selectedFilter);
+      setSelectedFilters(filters);
+    } else {
+      setSelectedFilters([...selectedFilters, selectedFilter]);
+    }
+  };
 
   return (
     <div className="mb-8">
@@ -20,7 +31,7 @@ const Accordion = (props: AccordionProps) => {
             setIsOpen(!isOpen);
           }}
         >
-          <div className="flex-1">{title}</div>
+          <div className="flex-1 font-bold">{title}</div>
           <div>
             {content && (
               <img
@@ -32,8 +43,22 @@ const Accordion = (props: AccordionProps) => {
         </div>
         {isOpen && content && (
           <div className="pt-3 pl-3">
-            {content?.map((subOption) => {
-              return <div className="py-1">{subOption}</div>;
+            {content.map((filterOption, idx) => {
+              return (
+                <div className="py-1 space-x-2" key={idx}>
+                  <input
+                    className="cursor-pointer"
+                    type="checkbox"
+                    defaultChecked={selectedFilters.includes(filterOption)}
+                    id={filterOption}
+                    name={filterOption}
+                    onClick={() => {
+                      handleFilterButtonClick(filterOption)
+                    }}
+                  />
+                  <label>{filterOption}</label>
+                </div>
+              );
             })}
           </div>
         )}
