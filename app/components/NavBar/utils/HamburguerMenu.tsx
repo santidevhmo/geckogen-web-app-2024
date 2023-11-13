@@ -19,33 +19,6 @@ const HamburguerMenu = (props: HamburguerMenuProps) => {
         <li>
           <Link
             className="block hover:text-blue-500 hover:bg-[#F4F4F4] py-2 rounded"
-            href={"/"}
-            onClick={() => setToggle(false)}
-          >
-            How it works
-          </Link>
-        </li>
-        <li>
-          <Link
-            className="block hover:text-blue-500 hover:bg-[#F4F4F4] py-2 rounded"
-            href={"/"}
-            onClick={() => setToggle(false)}
-          >
-            About
-          </Link>
-        </li>
-        <li>
-          <Link
-            className="block hover:text-blue-500 hover:bg-[#F4F4F4] py-2 rounded"
-            href={"/"}
-            onClick={() => setToggle(false)}
-          >
-            Care Sheet
-          </Link>
-        </li>
-        <li>
-          <Link
-            className="block hover:text-blue-500 hover:bg-[#F4F4F4] py-2 rounded"
             href={"/shop"}
             onClick={() => setToggle(false)}
           >
@@ -59,15 +32,6 @@ const HamburguerMenu = (props: HamburguerMenuProps) => {
             onClick={() => setToggle(false)}
           >
             My Orders
-          </Link>
-        </li>
-        <li>
-          <Link
-            className="block hover:text-blue-500 hover:bg-[#F4F4F4] py-2 rounded"
-            href={"/"}
-            onClick={() => setToggle(false)}
-          >
-            Contact
           </Link>
         </li>
       </ul>
