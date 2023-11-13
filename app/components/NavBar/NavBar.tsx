@@ -48,7 +48,7 @@ const NavBar = () => {
                   <div>
                     <Link
                       href={"/"}
-                      className="py-2 px-4 bg-black text-white rounded-full"
+                      className="py-2 px-4 border border-black rounded-full"
                     >
                       Sign Out
                     </Link>

@@ -19,33 +19,6 @@ const HamburguerMenu = (props: HamburguerMenuProps) => {
         <li>
           <Link
             className="block hover:text-blue-500 hover:bg-[#F4F4F4] py-2 rounded"
-            href={"/"}
-            onClick={() => setToggle(false)}
-          >
-            How it works
-          </Link>
-        </li>
-        <li>
-          <Link
-            className="block hover:text-blue-500 hover:bg-[#F4F4F4] py-2 rounded"
-            href={"/"}
-            onClick={() => setToggle(false)}
-          >
-            About
-          </Link>
-        </li>
-        <li>
-          <Link
-            className="block hover:text-blue-500 hover:bg-[#F4F4F4] py-2 rounded"
-            href={"/"}
-            onClick={() => setToggle(false)}
-          >
-            Care Sheet
-          </Link>
-        </li>
-        <li>
-          <Link
-            className="block hover:text-blue-500 hover:bg-[#F4F4F4] py-2 rounded"
             href={"/shop"}
             onClick={() => setToggle(false)}
           >
@@ -61,15 +34,6 @@ const HamburguerMenu = (props: HamburguerMenuProps) => {
             My Orders
           </Link>
         </li>
-        <li>
-          <Link
-            className="block hover:text-blue-500 hover:bg-[#F4F4F4] py-2 rounded"
-            href={"/"}
-            onClick={() => setToggle(false)}
-          >
-            Contact
-          </Link>
-        </li>
       </ul>
       <div className="flex justify-center mt-8">
         {isSignedIn ? (
@@ -77,7 +41,7 @@ const HamburguerMenu = (props: HamburguerMenuProps) => {
             <div>
               <Link
                 href={"/"}
-                className="py-2 px-4 mr-1 bg-black text-white rounded-full"
+                className="py-2 px-4 border border-black rounded-full"
                 onClick={() => setToggle(false)}
               >
                 Sign Out

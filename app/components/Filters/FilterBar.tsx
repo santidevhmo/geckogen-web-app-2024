@@ -1,4 +1,4 @@
-import { Dispatch, SetStateAction } from "react";
+import { Dispatch, SetStateAction, useEffect } from "react";
 import FilterContent from "./FilterContent";
 
 interface FilterBarProps {
@@ -7,6 +7,23 @@ interface FilterBarProps {
 
 const FilterBar = (props: FilterBarProps) => {
   const { setShowFilters } = props;
+
+  useEffect(() => {
+    // Function to check screen size, update setShowFilters state and enable scrolling
+    function handleResize() {
+      if (window.innerWidth >= 1024) {
+        setShowFilters(false);
+        document.body.style.overflow = "auto";
+      }
+    }
+    // Add the event listener
+    window.addEventListener("resize", handleResize);
+    // Remove the event listener when the component unmounts
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+  
   const hideFilters = () => {
     setShowFilters(false);
     // Toggle body scroll lock when the menu is open
