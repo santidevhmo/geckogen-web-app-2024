@@ -5,7 +5,7 @@ const NavigationLinks = () => {
     <div>
       <ul className="flex mr-8 whitespace-nowrap gap-6">
         <li className="hover:text-blue-500"><Link href={"/shop"}>Shop</Link></li>
-        <li className="hover:text-blue-500"><Link href={"/"}>My Orders</Link></li>
+        <li className="hover:text-blue-500"><Link href={"/orders"}>My Orders</Link></li>
       </ul>
     </div>
   );

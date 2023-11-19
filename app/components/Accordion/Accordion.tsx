@@ -49,7 +49,7 @@ const Accordion = (props: AccordionProps) => {
                   <input
                     className="cursor-pointer"
                     type="checkbox"
-                    defaultChecked={selectedFilters.includes(filterOption)}
+                    checked={selectedFilters.includes(filterOption)}
                     id={filterOption}
                     name={filterOption}
                     onClick={() => {
