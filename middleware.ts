@@ -8,7 +8,7 @@ export default authMiddleware({
                      "/api/checkout", "/checkout", 
                      "/return", "/shop/product/:id", 
                      "/api/products", "/shop/product/api/products",
-                     "/checkout/:id"]
+                     "/checkout/:id", "/orders"]
 });
  
 export const config = {
