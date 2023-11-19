@@ -28,7 +28,7 @@ const HamburguerMenu = (props: HamburguerMenuProps) => {
         <li>
           <Link
             className="block hover:text-blue-500 hover:bg-[#F4F4F4] py-2 rounded"
-            href={"/"}
+            href={"/orders"}
             onClick={() => setToggle(false)}
           >
             My Orders
