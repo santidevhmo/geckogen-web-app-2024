@@ -2,7 +2,7 @@ import CheckoutForm from "../../components/CheckoutForm/CheckoutForm"
 
 const Checkout = ({ params }: { params: { priceId: string } }) => {
   return (
-    <div className="pt-28 pb-28">
+    <div className="pt-28 pb-28 h-[70rem] lg:h-[60rem]">
       <CheckoutForm priceId={params.priceId}/>
     </div>
   )

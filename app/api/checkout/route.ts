@@ -20,6 +20,9 @@ export async function POST(req: NextRequest) {
     ],
     mode: 'payment',
     return_url: `${process.env.DOMAIN}/return?session_id={CHECKOUT_SESSION_ID}`,
+    shipping_address_collection: {
+      allowed_countries: ["US"]
+    },
   });
 
   return NextResponse.json({clientSecret: session.client_secret});

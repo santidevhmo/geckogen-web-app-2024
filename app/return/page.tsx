@@ -31,7 +31,7 @@ const Return = () => {
           />
         </div>
         <p className="text-2xl">Thanks for your payment!</p>
-        <p className="text-xl">your order is in progress</p>
+        <p className="text-xl">your order has been placed</p>
         <br />
         
         <p className="text md">
@@ -44,7 +44,7 @@ const Return = () => {
               Back to shop
             </button>
           </Link>
-          <Link href={"/"}>
+          <Link href={"/orders"}>
             <button className="py-2 px-4 border rounded-full">
               Go to my orders
             </button>
