@@ -36,7 +36,6 @@ const Product = ({ params }: { params: { productId: string } }) => {
   return (
     <div className="pt-24 pb-14 flex justify-center lg:items-center lg:h-[50rem]">
       {product ? (
-        // <ProductDetailSkeleton/>
         <div className="w-[30rem] lg:flex lg:w-auto lg:gap-10 px-2">
           <div className="space-y-1 pb-7 lg:hidden">
             <p className="text-2xl md:text-3xl">{product.productName}</p>
