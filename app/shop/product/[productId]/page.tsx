@@ -1,5 +1,6 @@
 "use client";
 
+import ProductDetailSkeleton from "@/app/components/Skeleton/ProductDetailSkeleton";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
@@ -34,7 +35,8 @@ const Product = ({ params }: { params: { productId: string } }) => {
 
   return (
     <div className="pt-24 pb-14 flex justify-center lg:items-center lg:h-[50rem]">
-      {product && (
+      {product ? (
+        // <ProductDetailSkeleton/>
         <div className="w-[30rem] lg:flex lg:w-auto lg:gap-10 px-2">
           <div className="space-y-1 pb-7 lg:hidden">
             <p className="text-2xl md:text-3xl">{product.productName}</p>
@@ -49,7 +51,7 @@ const Product = ({ params }: { params: { productId: string } }) => {
             />
           </div>
 
-          <div className="pt-4 text-lg text-gray-600 w-fit lg:hidden">
+          <div className="pt-4 text-base text-gray-600 w-fit lg:hidden">
             <p>{product.productDescription ?? "No description available"}</p>
           </div>
 
@@ -64,10 +66,12 @@ const Product = ({ params }: { params: { productId: string } }) => {
           <div className="hidden lg:block">
             <div className="space-y-1 pb-7">
               <p className="text-2xl md:text-3xl">{product.productName}</p>
-              <p className="text-xl md:text-2xl">${product.productPrice / 100}</p>
+              <p className="text-xl md:text-2xl">
+                ${product.productPrice / 100}
+              </p>
             </div>
 
-            <div className="pt-4 text-lg text-gray-600 w-96">
+            <div className="pt-4 text-base text-gray-600 w-96">
               <p>{product.productDescription ?? "No description available"}</p>
             </div>
 
@@ -80,6 +84,8 @@ const Product = ({ params }: { params: { productId: string } }) => {
             </div>
           </div>
         </div>
+      ) : (
+        <ProductDetailSkeleton />
       )}
     </div>
   );
