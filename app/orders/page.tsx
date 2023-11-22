@@ -66,7 +66,7 @@ const MyOrders = () => {
           {
             isLoading ? (
               <OrdersSkeleton/>
-            ) : orders ? (
+            ) : orders?.length ? (
               orders.map((order) => {
                 return (
                   <OrderCard
