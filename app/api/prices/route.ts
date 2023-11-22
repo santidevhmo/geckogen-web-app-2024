@@ -7,8 +7,9 @@ export async function GET(request: NextRequest, response: NextResponse) {
     apiVersion: "2023-10-16"
   })
 
-  const prices = await stripe.products.list({
-    expand: [`data.default_price`]
+  const prices = await stripe.prices.list({
+    limit: 100,
+    active: true
   });
 
   return NextResponse.json(prices.data)
