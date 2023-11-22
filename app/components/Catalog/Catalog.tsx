@@ -9,7 +9,7 @@ const LazyProductCard = React.lazy(() => import("../ProductCard/ProductCard"));
 const Catalog = () => {
   const [catalog, setCatalog] = useState<Stripe.Product[]>([]);
   const [filteredItems, setFilteredItems] = useState<Stripe.Product[]>([]);
-  const {selectedFilters} = useFiltersContext();
+  const { selectedFilters } = useFiltersContext();
 
   useEffect(() => {
     const getCatalog = async () => {
@@ -22,6 +22,8 @@ const Catalog = () => {
       );
       const products = await stripe.products.list({
         expand: [`data.default_price`],
+        limit: 100,
+        active: true
       });
 
       setFilteredItems(products.data);
