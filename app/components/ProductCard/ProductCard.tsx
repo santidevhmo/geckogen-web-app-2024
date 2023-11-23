@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 interface ProductCardProps {
   productId: string
@@ -14,10 +15,12 @@ const ProductCard = (props: ProductCardProps) => {
     <div>
       <Link href={`shop/product/${productId}`}>
         <div>
-          <img
+          <Image
             className="object-cover"
+            width={417}
+            height={417}
             src={productImage}
-            alt=""
+            alt="productImage"
           />
         </div>
         <div className="pt-4 ml-2">
