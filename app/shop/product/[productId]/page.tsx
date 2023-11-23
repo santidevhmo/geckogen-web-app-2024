@@ -3,7 +3,7 @@ import Image from "next/image";
 
 const getProductData = async (productId: string) => {
   const response = await fetch(
-    `${process.env.DOMAIN}/api/products?id=${productId}`
+    `${process.env.DOMAIN}/api/product?id=${productId}`
   );
   if (!response.ok) {
     throw new Error("Failed to fetch data");
