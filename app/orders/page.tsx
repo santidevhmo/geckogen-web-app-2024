@@ -4,6 +4,7 @@ import Link from "next/link";
 import OrderCard from "../components/OrderCard/OrderCard";
 import { useEffect, useState } from "react";
 import OrdersSkeleton from "../components/Skeleton/OrdersSkeleton";
+import { useAuth } from "@clerk/nextjs";
 
 interface Orders {
   id: string;
@@ -18,12 +19,14 @@ interface Orders {
 const MyOrders = () => {
   const [orders, setOrders] = useState<Orders[]>();
   const [isLoading, setIsLoading] = useState(true);
+  const { userId } = useAuth();
+  const userID = userId as string;
 
   useEffect(() => {
     const getOrders = async () => {
       try {
         const response = await fetch(
-          "http://localhost:5000/geckogen-a0538/us-central1/app/api/orders" // change URL when backend deployed
+          `http://localhost:5000/geckogen-a0538/us-central1/app/api/orders/${userID}` // change URL when backend deployed
         );
         if (response.ok) {
           const data = await response.json();
