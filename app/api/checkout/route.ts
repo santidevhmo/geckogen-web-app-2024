@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import Stripe from "stripe";
+import { auth } from "@clerk/nextjs";
 
 const stripe = new Stripe(process.env.NEXT_PUBLIC_STRIPE_API_SECRET_KEY as string, {
   typescript: true,
@@ -8,8 +9,10 @@ const stripe = new Stripe(process.env.NEXT_PUBLIC_STRIPE_API_SECRET_KEY as strin
 
 export async function POST(req: NextRequest) {
   const { priceId } = await req.json()
+  const { userId } = auth();
 
   const session = await stripe.checkout.sessions.create({
+    client_reference_id: userId as string,
     ui_mode: 'embedded',
     line_items: [
       {
