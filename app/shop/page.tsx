@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, createContext } from "react";
+import { useState } from "react";
 import ShopHeader from "../components/ShopHeader/ShopHeader";
 import Catalog from "../components/Catalog/Catalog";
 import FilterSideBar from "../components/Filters/FilterSideBar";
