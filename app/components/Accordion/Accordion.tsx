@@ -45,7 +45,7 @@ const Accordion = (props: AccordionProps) => {
           <div className="pt-3 pl-3">
             {content.map((filterOption, idx) => {
               return (
-                <div className="py-1 space-x-2" key={idx}>
+                <div className="py-1 space-x-2 text-sm text-gray-600" key={idx}>
                   <input
                     className="cursor-pointer"
                     type="checkbox"
