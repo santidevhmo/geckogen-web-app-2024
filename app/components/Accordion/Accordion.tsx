@@ -47,7 +47,7 @@ const Accordion = (props: AccordionProps) => {
               return (
                 <div className="py-1 space-x-2 text-sm text-gray-600" key={idx}>
                   <input
-                    className="cursor-pointer"
+                    className="cursor-pointer accent-black"
                     type="checkbox"
                     checked={selectedFilters.includes(filterOption)}
                     id={filterOption}
