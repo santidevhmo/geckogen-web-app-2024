@@ -1,10 +1,6 @@
-"use client";
-
 import Link from "next/link";
 import OrderCard from "../components/OrderCard/OrderCard";
-import { useEffect, useState } from "react";
-import OrdersSkeleton from "../components/Skeleton/OrdersSkeleton";
-import { useAuth } from "@clerk/nextjs";
+import { auth } from "@clerk/nextjs";
 
 interface Orders {
   id: string;
@@ -16,32 +12,21 @@ interface Orders {
   total: number;
 }
 
-const MyOrders = () => {
-  const [orders, setOrders] = useState<Orders[]>();
-  const [isLoading, setIsLoading] = useState(true);
-  const { userId } = useAuth();
-  const userID = userId as string;
+const getOrders = async (userID: string) => {
+  const response = await fetch(
+    `http://localhost:5000/geckogen-a0538/us-central1/app/api/orders/${userID}` // change URL when backend deployed
+  );
+  if (!response.ok) {
+    throw new Error("Failed to fetch data");
+  }
 
-  useEffect(() => {
-    const getOrders = async () => {
-      try {
-        const response = await fetch(
-          `http://localhost:5000/geckogen-a0538/us-central1/app/api/orders/${userID}` // change URL when backend deployed
-        );
-        if (response.ok) {
-          const data = await response.json();
-          setOrders(data);
-          setIsLoading(false);
-        } else {
-          console.error("Failed to fetch orders");
-        }
-      } catch (error) {
-        console.error("Error fetching orders:", error);
-      }
-    };
+  return response.json();
+};
 
-    getOrders();
-  }, []);
+const MyOrders = async () => {
+  const { userId } = auth();
+  const orders: Orders[] = await getOrders(userId as string);
+  
 
   const noOrdersPage = (
     <div className="py-60 flex justify-center items-center">
@@ -57,7 +42,7 @@ const MyOrders = () => {
         </p>
       </div>
     </div>
-  )
+  );
 
   return (
     <div className="pt-28 px-6 mb-10 flex justify-center">
@@ -66,11 +51,8 @@ const MyOrders = () => {
           <p className="text-2xl lg:text-3xl">My Orders</p>
         </div>
         <div className="mt-4">
-          {
-            isLoading ? (
-              <OrdersSkeleton/>
-            ) : orders?.length ? (
-              orders.map((order) => {
+          {orders.length > 0
+            ? orders.map((order) => {
                 return (
                   <OrderCard
                     orderID={order.id}
@@ -83,8 +65,7 @@ const MyOrders = () => {
                   />
                 );
               })
-            ) : noOrdersPage
-          }
+            : noOrdersPage}
         </div>
       </div>
     </div>
