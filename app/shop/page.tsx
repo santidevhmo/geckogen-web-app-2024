@@ -19,10 +19,11 @@ export default function Shop() {
         showSideFilters={showSideFilters}
         setShowFilters={setShowFilters}
         setShowSideFilters={setShowSideFilters}
+        filterCount={selectedFilters.length}
       />
       <FiltersContext.Provider value={{ selectedFilters, setSelectedFilters }}>
         <div className="lg:flex lg:items-start pt-[8.5rem]">
-          {showSideFilters && <FilterSideBar />}
+          {showSideFilters && <FilterSideBar filterCount={selectedFilters.length} />}
           {showFilters && <FilterBar setShowFilters={setShowFilters} />}
           <div className="flex w-full justify-center mb-8">
             <div>
