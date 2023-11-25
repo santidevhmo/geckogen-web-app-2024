@@ -16,7 +16,7 @@ const Product = async ({ params }: { params: { productId: string } }) => {
   const product = await getProductData(params.productId);
 
   return (
-    <div className="pt-24 pb-14 flex justify-center lg:items-center lg:h-[50rem]">
+    <div className="pt-24 pb-14 flex justify-center">
       <div className="px-2 w-[26rem] lg:w-auto">
         <div className="mb-8 text-blue-500 w-32 py-1 hover:bg-gray-100 rounded-md">
           <Link href={"/shop"}>
@@ -42,8 +42,8 @@ const Product = async ({ params }: { params: { productId: string } }) => {
           <div>
             <Image
               className="object-cover rounded-lg"
-              width={432}
-              height={432}
+              width={600}
+              height={600}
               src={product.productImage[0]}
               alt=""
             />
@@ -55,7 +55,7 @@ const Product = async ({ params }: { params: { productId: string } }) => {
 
           <div className="pt-12 lg:hidden">
             <Link href={`/checkout/${product.productPriceId}`}>
-              <button className="py-3 w-full bg-blue-500 text-white rounded-md">
+              <button className="py-3 w-full bg-blue-500 text-white rounded-md hover:bg-blue-600 transition-all 3s ease-in">
                 Buy
               </button>
             </Link>
@@ -75,7 +75,7 @@ const Product = async ({ params }: { params: { productId: string } }) => {
 
             <div className="pt-12">
               <Link href={`/checkout/${product.productPriceId}`}>
-                <button className="py-3 w-full bg-blue-500 text-white rounded-md">
+                <button className="py-3 w-full bg-blue-500 text-white rounded-md hover:bg-blue-600 transition-all 3s ease-in">
                   Buy
                 </button>
               </Link>
