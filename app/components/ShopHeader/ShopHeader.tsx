@@ -20,7 +20,7 @@ const ShopHeader = (props: ShopHeaderProps) => {
       <div>
         <p className="text-2xl lg:text-3xl">Shop</p>
       </div>
-      <div className="flex items-center gap-4 lg:hidden">
+      <div className="flex items-center gap-4 lg:hidden mt-1">
         <button
           className="flex gap-3 px-3 py-1 rounded-full border border-black"
           onClick={showFilters}
@@ -37,7 +37,7 @@ const ShopHeader = (props: ShopHeaderProps) => {
           />
         </button>
       </div>
-      <div className="hidden lg:flex">
+      <div className="hidden lg:flex text-lg">
         <button
           className="flex gap-3"
           onClick={() => setShowSideFilters(!showSideFilters)}

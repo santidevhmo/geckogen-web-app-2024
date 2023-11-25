@@ -8,7 +8,7 @@ interface HomeLogoProps {
 const HomeLogo = (props: HomeLogoProps) => {
   const { setToggle } = props;
   return (
-    <div className="text-2xl mr-6 font-semibold">
+    <div className="text-2xl mr-6">
       <Link onClick={() => setToggle(false)} href={"/"}>
         Geckogen
       </Link>

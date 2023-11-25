@@ -55,7 +55,7 @@ const Catalog = () => {
   }
   
   return (
-    <div className="lg:px-6 mt-1 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-1 lg:gap-x-2 gap-y-5">
+    <div className="lg:px-6 mt-1 grid grid-cols-2 md:grid-cols-3 gap-x-1 lg:gap-x-4 gap-y-12">
       {filteredItems.map((product) => {
         const price = getPriceFromProduct(product);
         return (
