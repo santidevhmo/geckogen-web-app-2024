@@ -55,6 +55,7 @@ const MyOrders = async () => {
             ? orders.map((order) => {
                 return (
                   <OrderCard
+                    key={order.id}
                     orderID={order.id}
                     orderDate={order.date}
                     productName={order.productName}
