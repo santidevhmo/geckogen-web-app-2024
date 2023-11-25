@@ -1,50 +1,49 @@
-"use client";
-
-import ProductDetailSkeleton from "@/app/components/Skeleton/ProductDetailSkeleton";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import Image from "next/image";
 
-interface ProductData {
-  productName: string;
-  productPrice: number;
-  productPriceId: string;
-  productImage: string[];
-  productDescription: string;
-}
+const getProductData = async (productId: string) => {
+  const response = await fetch(
+    `${process.env.DOMAIN}/api/product?id=${productId}`
+  );
+  if (!response.ok) {
+    throw new Error("Failed to fetch data");
+  }
 
-const Product = ({ params }: { params: { productId: string } }) => {
-  const [product, setProduct] = useState<ProductData>();
+  return response.json();
+};
 
-  useEffect(() => {
-    const getProduct = async () => {
-      try {
-        const response = await fetch(`/api/products?id=${params.productId}`);
-        if (response.ok) {
-          const data = await response.json();
-          setProduct(data);
-        } else {
-          console.error("Failed to fetch product");
-        }
-      } catch (error) {
-        console.error("Error fetching product:", error);
-      }
-    };
-
-    getProduct();
-  }, []);
+const Product = async ({ params }: { params: { productId: string } }) => {
+  const product = await getProductData(params.productId);
 
   return (
-    <div className="pt-24 pb-14 flex justify-center lg:items-center lg:h-[50rem]">
-      {product ? (
-        <div className="w-[30rem] lg:flex lg:w-auto lg:gap-10 px-2">
+    <div className="pt-24 pb-14 flex justify-center">
+      <div className="px-2 w-[26rem] lg:w-auto">
+        <div className="mb-8 text-blue-500 w-32 py-1 hover:bg-gray-100 rounded-md">
+          <Link href={"/shop"}>
+            <div className="flex items-center gap-2">
+              <div>
+                <img
+                  className="h-4 w-4"
+                  src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAACXBIWXMAAAsTAAALEwEAmpwYAAAArElEQVR4nO3ZsQ3CQBBE0WkCZOo0a2npjgiBIMEBIUi3gjJACxE0wOxpXgUefQe+MyAi/MbHElM7wWKL2iNixhRPWOxRkt8XsDh/RrQL1tcB5WgEC5VgoRIsVIKFSrBQCRauD0ASrhIkvIcSydrxPSKPqXlcLct6GeI/r9bmtkJZrjGkXGVIucqQcpUhpTKsVIaVyrBSGVZdlRm/fk8fUFqOyTsAi92/H0WkVy/ksYTxlICpRQAAAABJRU5ErkJggg=="
+                />
+              </div>
+              <div>
+                <p>Back to shop</p>
+              </div>
+            </div>
+          </Link>
+        </div>
+        <div className="lg:flex lg:gap-10">
           <div className="space-y-1 pb-7 lg:hidden">
             <p className="text-2xl md:text-3xl">{product.productName}</p>
             <p className="text-xl md:text-2xl">${product.productPrice / 100}</p>
           </div>
 
           <div>
-            <img
-              className="w-full object-cover rounded-lg"
+            <Image
+              className="object-cover rounded-lg"
+              width={600}
+              height={600}
               src={product.productImage[0]}
               alt=""
             />
@@ -56,7 +55,7 @@ const Product = ({ params }: { params: { productId: string } }) => {
 
           <div className="pt-12 lg:hidden">
             <Link href={`/checkout/${product.productPriceId}`}>
-              <button className="py-3 w-full bg-blue-500 text-white rounded-md">
+              <button className="py-3 w-full bg-blue-500 text-white rounded-md hover:bg-blue-600 transition-all 3s ease-in">
                 Buy
               </button>
             </Link>
@@ -76,16 +75,14 @@ const Product = ({ params }: { params: { productId: string } }) => {
 
             <div className="pt-12">
               <Link href={`/checkout/${product.productPriceId}`}>
-                <button className="py-3 w-full bg-blue-500 text-white rounded-md">
+                <button className="py-3 w-full bg-blue-500 text-white rounded-md hover:bg-blue-600 transition-all 3s ease-in">
                   Buy
                 </button>
               </Link>
             </div>
           </div>
         </div>
-      ) : (
-        <ProductDetailSkeleton />
-      )}
+      </div>
     </div>
   );
 };

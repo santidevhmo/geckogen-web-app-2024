@@ -3,39 +3,35 @@ import Stripe from "stripe";
 import ProductCardSkeleton from "../Skeleton/ProductCardSkeleton";
 import React from "react";
 import { useFiltersContext } from "../Filters/FiltersContext";
+import useSWR from "swr";
+import Loading from "@/app/loading";
 
 const LazyProductCard = React.lazy(() => import("../ProductCard/ProductCard"));
 
+const fetcher = async (url: string) => {
+  const response = await fetch(url);
+  return response.json()
+};
+
 const Catalog = () => {
-  const [catalog, setCatalog] = useState<Stripe.Product[]>([]);
   const [filteredItems, setFilteredItems] = useState<Stripe.Product[]>([]);
   const { selectedFilters } = useFiltersContext();
 
-  useEffect(() => {
-    const getCatalog = async () => {
-      const stripe = new Stripe(
-        process.env.NEXT_PUBLIC_STRIPE_API_SECRET_KEY as string,
-        {
-          typescript: true,
-          apiVersion: "2023-10-16",
-        }
-      );
-      const products = await stripe.products.list({
-        expand: [`data.default_price`],
-        limit: 100,
-        active: true
-      });
-
-      setFilteredItems(products.data);
-      setCatalog(products.data);
-    };
-
-    getCatalog();
-  }, []);
+  const { data: catalog } : { data : Stripe.Product[] } = useSWR(
+    "/api/catalog",
+    fetcher
+  );
 
   useEffect(() => {
-    filterItems();
-  }, [selectedFilters]);
+    if (catalog) {
+      filterItems();
+    }
+  }, [selectedFilters, catalog])
+
+  if (!catalog) {
+    // Data is still loading, return loading state or spinner
+    return <Loading/>;
+  }
 
   function filterItems() {
     if (selectedFilters.length > 0) {
@@ -47,22 +43,19 @@ const Catalog = () => {
       });
       setFilteredItems(tempItems.flat());
     } else {
-      setFilteredItems([...catalog]);
+      setFilteredItems(catalog);
     }
   }
 
   function getPriceFromProduct(
     product: Stripe.Product
-  ): Stripe.Price | undefined {
-    if (product.default_price && typeof product.default_price === "object") {
-      // Check if default_price exists and is an object
-      return product.default_price as Stripe.Price;
-    }
-    return undefined;
+  ): Stripe.Price {
+    // Check if default_price exists and is an object
+    return product.default_price as Stripe.Price;
   }
-
+  
   return (
-    <div className="lg:px-6 mt-1 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-1 lg:gap-x-2 gap-y-5">
+    <div className="lg:px-6 mt-1 grid grid-cols-2 md:grid-cols-3 gap-x-1 lg:gap-x-4 gap-y-12">
       {filteredItems.map((product) => {
         const price = getPriceFromProduct(product);
         return (
@@ -71,7 +64,7 @@ const Catalog = () => {
               productId={product.id}
               productImage={product.images[0]}
               productTitle={product.name}
-              productPrice={(price?.unit_amount ?? 0) / 100}
+              productPrice={price.unit_amount as number / 100}
             />
           </Suspense>
         );

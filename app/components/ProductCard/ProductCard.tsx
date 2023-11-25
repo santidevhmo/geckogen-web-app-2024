@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 interface ProductCardProps {
   productId: string
@@ -14,15 +15,17 @@ const ProductCard = (props: ProductCardProps) => {
     <div>
       <Link href={`shop/product/${productId}`}>
         <div>
-          <img
-            className="object-cover"
+          <Image
+            className="object-cover md:rounded-sm"
+            width={417}
+            height={417}
             src={productImage}
-            alt=""
+            alt="productImage"
           />
         </div>
-        <div className="pt-4 ml-2">
-          <p className="text-sm">{productTitle}</p>
-          <p className="text-md font-extrabold">${productPrice}</p>
+        <div className="pt-4 px-2 lg:px-0">
+          <p className="text-lg font-extrabold">{productTitle}</p>
+          <p className="text-base">${productPrice}</p>
         </div>
       </Link>
     </div>
