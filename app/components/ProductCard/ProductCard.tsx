@@ -16,7 +16,7 @@ const ProductCard = (props: ProductCardProps) => {
       <Link href={`shop/product/${productId}`}>
         <div>
           <Image
-            className="object-cover md:rounded-sm"
+            className="object-cover lg:rounded-sm"
             width={417}
             height={417}
             src={productImage}
@@ -24,8 +24,11 @@ const ProductCard = (props: ProductCardProps) => {
           />
         </div>
         <div className="pt-4 px-2 lg:px-0">
-          <p className="text-lg font-extrabold">{productTitle}</p>
-          <p className="text-base">${productPrice}</p>
+          <p className="text-lg font-medium">{productTitle}</p>
+          <div className="flex items-start text-base">
+            <span>$</span>
+            <span className="text-xl">{productPrice}</span>
+          </div>
         </div>
       </Link>
     </div>

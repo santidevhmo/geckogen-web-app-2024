@@ -64,7 +64,7 @@ const Catalog = () => {
               productId={product.id}
               productImage={product.images[0]}
               productTitle={product.name}
-              productPrice={price.unit_amount as number / 100}
+              productPrice={price.unit_amount as number / 100.00}
             />
           </Suspense>
         );

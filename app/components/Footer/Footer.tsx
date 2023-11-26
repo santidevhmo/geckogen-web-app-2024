@@ -11,13 +11,7 @@ const Footer = () => {
           <div className="mb-5 text-xs font-bold">
             <p>Mail</p>
             <Link href={"mailto:edgar@geckogen.com"}>
-              <p className="text-lg font-bold">edgar@geckogen.com</p>
-            </Link>
-          </div>
-          <div className="mb-14 text-xs">
-            <p>Phone</p>
-            <Link href={"tel:+526621403149"}>
-              <p className="text-lg">(662) 140 3149</p>
+              <p className="text-lg">edgar@geckogen.com</p>
             </Link>
           </div>
         </div>
@@ -30,21 +24,28 @@ const Footer = () => {
         </div>
         <div className="flex items-center gap-4">
           <div className="bg-black w-11 h-11 p-2 rounded">
-            <Link href={"/"}>
+            <a href={"https://www.instagram.com/geckogen"} target="_blank">
               <img src="/insta-icon.png" alt="instagram-icon" />
-            </Link>
+            </a>
           </div>
           <div className="bg-black w-11 h-11 p-2 rounded">
-            <Link href={"/"}>
+            <a href={"https://www.facebook.com/Geckogenlabs"} target="_blank">
               <img src="/facebook-icon.png" alt="facebook-icon" />
-            </Link>
+            </a>
           </div>
         </div>
       </div>
-      <div>
-        <p className="text-sm text-gray-400">
-          Copyright © 2023 Geckogen. All rights reserved.
-        </p>
+      <div className="md:flex space-y-2 justify-between">
+        <div>
+          <p className="text-sm text-gray-400">
+            Copyright © 2023 Geckogen. All rights reserved.
+          </p>
+        </div>
+        <div>
+          <p className="text-sm text-gray-400">
+            Developed by Alan Muñoz
+          </p>
+        </div>
       </div>
     </footer>
   );

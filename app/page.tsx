@@ -1,4 +1,5 @@
 import Link from "next/link";
+import ProductCard from "./components/ProductCard/ProductCard";
 
 export default function Home() {
   return (
@@ -95,57 +96,30 @@ export default function Home() {
           </div>
         </div>
         <div className="flex justify-center py-10">
-          <div className="w-8/12 md:w-10/12 flex flex-wrap justify-center gap-5 gap-y-10">
+          <div className="w-8/12 md:w-10/12 flex flex-wrap justify-center gap-5 gap-y-12">
             {/* Gecko 1 */}
-            <Link href={"/"}>
-              <div className="w-60 md:w-80 ease in duration-75 hover:-translate-y-3">
-                <div className="">
-                  <img
-                    className="object-cover h-56 w-72 md:h-80 md:w-80"
-                    src="/featured-gecko-1.png"
-                    alt=""
-                  />
-                </div>
-                <div className="pt-4">
-                  <p className="text-lg">Gecko LW C50</p>
-                  <p className="text-md font-extrabold">$1,200.00</p>
-                </div>
-              </div>
-            </Link>
+            <ProductCard
+              productId="prod_P3dqsxunfez7bg"
+              productTitle="Full Pin Extreme C19"
+              productImage="https://files.stripe.com/links/MDB8YWNjdF8xTzIxRkFBSlRlTUwyOVpVfGZsX3Rlc3Rfc3hFN09OcUI4VE1TU0JLY3hHSEptb3pW00wPp8U5md"
+              productPrice={320}
+            />
 
             {/* Gecko 2 */}
-            <Link href={"/"}>
-              <div className="w-60 md:w-80 ease in duration-75 hover:-translate-y-3">
-                <div className="">
-                  <img
-                    className="object-cover h-56 w-72 md:h-80 md:w-80"
-                    src="/featured-gecko-2.png"
-                    alt=""
-                  />
-                </div>
-                <div className="pt-4">
-                  <p className="text-xl">Gecko Red Stripe G25</p>
-                  <p className="text-md font-extrabold">$180.00</p>
-                </div>
-              </div>
-            </Link>
+            <ProductCard
+              productId="prod_P3dFNDH77Hs7Og"
+              productTitle="Red Stripe G24"
+              productImage="https://files.stripe.com/links/MDB8YWNjdF8xTzIxRkFBSlRlTUwyOVpVfGZsX3Rlc3RfMjB3YW1zUUFwOVE2R3RLMnNoTkJZam1W002iG28foG"
+              productPrice={180}
+            />
 
             {/* Gecko 3 */}
-            <Link href={"/"}>
-              <div className="w-60 md:w-80 ease in duration-75 hover:-translate-y-3">
-                <div className="">
-                  <img
-                    className="object-cover h-56 w-72 md:h-80 md:w-80"
-                    src="/featured-gecko-3.png"
-                    alt=""
-                  />
-                </div>
-                <div className="pt-4">
-                  <p className="text-xl">Gecko Xtreme C68</p>
-                  <p className="text-md font-extrabold">$380.00</p>
-                </div>
-              </div>
-            </Link>
+            <ProductCard
+              productId="prod_P3cqKug3rGhkgZ"
+              productTitle="Wide Back F G11"
+              productImage="https://files.stripe.com/links/MDB8YWNjdF8xTzIxRkFBSlRlTUwyOVpVfGZsX3Rlc3RfZmwwVnZLUmlCRFVYUXF5M0hjNHAxTm1Z008grQs0rE"
+              productPrice={450}
+            />
           </div>
         </div>
         <div className="flex justify-center">
@@ -154,7 +128,7 @@ export default function Home() {
               href={"/shop"}
               className="py-2 px-4 mr-1 bg-blue-500 text-white rounded-full lg:text-lg"
             >
-              Explore the catalogue
+              Explore the catalog
             </Link>
           </div>
         </div>

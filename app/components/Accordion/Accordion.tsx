@@ -31,7 +31,7 @@ const Accordion = (props: AccordionProps) => {
             setIsOpen(!isOpen);
           }}
         >
-          <div className="flex-1 font-bold">{title}</div>
+          <div className="flex-1">{title}</div>
           <div>
             {content && (
               <img

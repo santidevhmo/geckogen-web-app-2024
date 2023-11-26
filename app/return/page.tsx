@@ -5,7 +5,6 @@ import { useEffect, useState } from "react";
 
 const Return = () => {
   const [status, setStatus] = useState(null);
-  const [customerEmail, setCustomerEmail] = useState("");
 
   useEffect(() => {
     const queryString = window.location.search;
@@ -16,7 +15,6 @@ const Return = () => {
       .then((res) => res.json())
       .then((data) => {
         setStatus(data.status);
-        setCustomerEmail(data.customer_email);
       });
   }, []);
 
@@ -33,10 +31,6 @@ const Return = () => {
         <p className="text-2xl">Thanks for your payment!</p>
         <p className="text-xl">your order has been placed</p>
         <br />
-        
-        <p className="text md">
-          A confirmation email was sent to <b>{customerEmail}</b>
-        </p>
 
         <div className="pt-8 flex justify-center gap-8">
           <Link href={"/shop"}>
