@@ -14,7 +14,7 @@ interface Orders {
 
 const getOrders = async (userID: string) => {
   const response = await fetch(
-    `http://localhost:5000/geckogen-a0538/us-central1/app/api/orders/${userID}` // change URL when backend deployed
+    `https://api-jtnmag5rtq-uc.a.run.app/api/orders/${userID}` // change URL when backend deployed
   );
   if (!response.ok) {
     throw new Error("Failed to fetch data");

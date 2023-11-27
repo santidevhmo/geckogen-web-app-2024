@@ -58,8 +58,8 @@ export default function Home() {
       </div>
 
       {/* DNA Sequencing Project */}
-      <div className="bg-black lg:flex lg:h-[48rem]">
-        <div className="flex justify-center pt-12 text-gray-200">
+      <div className="bg-black lg:flex lg:h-[54rem]" id="DNA">
+        <div className="flex justify-center pt-24 text-gray-200">
           <div className="w-8/12 md:w-8/12">
             <p className="text-5xl mb-5 md:text-6xl">DNA Sequencing Project</p>
             <p className="text-lg">

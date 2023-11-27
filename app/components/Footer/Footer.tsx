@@ -2,13 +2,13 @@ import Link from "next/link";
 
 const Footer = () => {
   return (
-    <footer className="py-10 px-20 border-t bg-[#F4F4F4]">
+    <footer className="py-10 px-20 border-t bg-[#F4F4F4]" id="footer">
       <div className="md:flex justify-center">
         <div className="md:text-center mt-4">
           <div>
             <p className="text-4xl mb-5">Contact us</p>
           </div>
-          <div className="mb-5 text-xs font-bold">
+          <div className="mb-5 text-xs">
             <p>Mail</p>
             <Link href={"mailto:edgar@geckogen.com"}>
               <p className="text-lg">edgar@geckogen.com</p>
