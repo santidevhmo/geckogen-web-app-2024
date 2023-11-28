@@ -13,7 +13,7 @@ const ProductCard = (props: ProductCardProps) => {
   return (
     
     <div>
-      <Link href={`shop/product/${productId}`}>
+      <Link href={`shop/product/${productId}`} prefetch={false}>
         <div>
           <Image
             className="object-cover lg:rounded-sm"
