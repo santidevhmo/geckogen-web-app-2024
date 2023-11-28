@@ -1,8 +1,10 @@
+import Loader from "./components/HelixLoader/HelixLoader";
+
 const Loading = () => {
   return (
     <div className="h-screen flex justify-center items-center">
       <div>
-        <img className="animate-spin" src="/loading.png" alt="" />
+        <Loader/>
       </div>
     </div>
   );

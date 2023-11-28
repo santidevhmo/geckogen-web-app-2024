@@ -4,7 +4,7 @@ import Image from "next/image";
 const getProductData = async (productId: string) => {
   const response = await fetch(
     `${process.env.DOMAIN}/api/product?id=${productId}`
-  );
+  ,{ next: { revalidate: 86400 } });
   if (!response.ok) {
     throw new Error("Failed to fetch data");
   }
@@ -61,7 +61,7 @@ const Product = async ({ params }: { params: { productId: string } }) => {
             </Link>
           </div>
 
-          <div className="hidden lg:block">
+          <div className="hidden lg:block w-[30rem]">
             <div className="space-y-1 pb-7">
               <p className="text-2xl md:text-3xl">{product.productName}</p>
               <p className="text-xl md:text-2xl">
@@ -69,7 +69,7 @@ const Product = async ({ params }: { params: { productId: string } }) => {
               </p>
             </div>
 
-            <div className="pt-4 text-base text-gray-600 w-96">
+            <div className="pt-4 text-base text-gray-600 w-fit">
               <p>{product.productDescription ?? "No description available"}</p>
             </div>
 

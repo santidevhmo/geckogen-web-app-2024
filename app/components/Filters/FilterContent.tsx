@@ -12,12 +12,9 @@ const FilterContent = () => {
         content={[
                   "Correlophus ciliatus (Crested Gecko)", 
                   "Rhacodactylus auriculatus (Gargoyle gecko)", 
-                  "Sarasinorum",
-                  "Leachianus",
-                  "Main Land Chahoua (Grand Terre)",
-                  "Blue Tongue Skink"]}
+                  "Mniarogekko (Chahoua)"]}
       />
-      <Accordion title="Microfauna" content={["Springtails", "Isopods"]} />
+      <Accordion title="Microfauna" content={["Isopods"]} />
       <Accordion title="Others" content={["Apparel", "Complete Meal Formula"]} />
     </div>
   );
