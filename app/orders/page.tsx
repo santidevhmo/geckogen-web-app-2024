@@ -50,7 +50,7 @@ const MyOrders = async () => {
         <div className="">
           <p className="text-2xl lg:text-3xl">My Orders</p>
         </div>
-        <div className="mt-4">
+        <div className="mt-4 mb-36">
           {orders.length > 0
             ? orders.map((order) => {
                 return (
