@@ -41,11 +41,6 @@ const Footer = () => {
             Copyright © 2023 Geckogen. All rights reserved.
           </p>
         </div>
-        <div>
-          <p className="text-sm text-gray-400">
-            Developed by Alan Muñoz
-          </p>
-        </div>
       </div>
     </footer>
   );
