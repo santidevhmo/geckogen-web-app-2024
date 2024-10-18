@@ -83,16 +83,22 @@ export default function Home() {
             </p>
             <br />
             <p className="text-lg">
-              The service will be a non intrusive collection approach and will
-              require a shed sample. The pilot is to begin requesting samples
+              The service will be a non intrusive collection approach. The pilot is to begin requesting samples
               from collectors that wish to participate.
             </p>
+            <div className="whitespace-nowrap mt-20">
+              <Link
+                className="py-4 px-6 mr-4 cursor-pointer rounded-full w-28 bg-blue-500 text-white lg:text-lg"
+                href={"https://www.instagram.com/geckogen"} target="_blank">
+                Contact Us for more information
+              </Link>
+            </div>
           </div>
         </div>
-        <div className="flex justify-center items-end">
+        <div className="flex justify-center items-center">
           <img
-            className="object-cover h-[20rem] w-[25rem] lg:h-[30rem] lg:w-[70rem]"
-            src="/gecko-dna-section.png"
+            className="object-cover h-[20rem] w-[25rem] lg:h-[30rem] lg:w-[70rem] rounded-full mb-20"
+            src="/dna-geckogen.webp"
             alt=""
           />
         </div>
