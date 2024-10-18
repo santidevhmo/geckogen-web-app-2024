@@ -1,17 +1,28 @@
 import Link from "next/link";
 import ProductCard from "./components/ProductCard/ProductCard";
+import { Reenie_Beanie } from 'next/font/google';
+
+const reenieBeanie = Reenie_Beanie({
+  weight: '400',
+  subsets: ['latin']
+});
 
 export default function Home() {
   return (
     <div>
       {/* Geckogen */}
-      <div className="lg:flex lg:h-[55rem] lg:justify-end">
+      <div className="lg:flex lg:h-[48rem] lg:justify-end">
         <div className="flex justify-center lg:justify-end pt-32 lg:pt-52">
           <div className="w-8/12 text-left lg:text-left">
             <p className="text-5xl mb-5 md:text-6xl lg:text-7xl">Geckogen</p>
-            <p className="text-xl md:text-2xl mb-14">
-              Home of the Monochrome. Over 20 years of gecko morph design in New
-              Cadelionia.
+            <p className="md:text-2xl lg:text-xl mb-7">
+              Changing the mentality from “pet ownership“ to a “partnership” by focusing on the preservation of non-human species.
+            </p>
+            <p className="md:text-2xl lg:text-xl mb-7">
+              A partnership where we become guardians rather than owners by using science to improve conditions for all living things.
+            </p>
+            <p className={`${reenieBeanie.className} text-3xl mb-10`}>
+              Edgar A. Machuca Sahagun
             </p>
             <div className="whitespace-nowrap">
               <Link
@@ -23,13 +34,12 @@ export default function Home() {
             </div>
           </div>
         </div>
-        <div className="mt-20 lg:flex lg:items-end">
-          <div className="flex justify-end">
+        <div className="lg:flex lg:items-center relative">
+          <div className="flex justify-end relative" style={{ right: '-200px' }}>
             <img
-              src="/gecko-home.png"
-              alt="Your Image"
-              className="h-72 w-fit md:h-96 lg:w-[55rem] lg:h-auto"
-              //className="object-cover h-83 w-96"
+              src="/gecko-hero-bw.jpeg"
+              alt="Gecko Hero Image"
+              className="py-2 h-72 w-fit md:h-96 lg:w-[100rem] lg:h-auto"
             />
           </div>
         </div>
