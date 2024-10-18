@@ -83,28 +83,25 @@ export default function Home() {
             </p>
             <br />
             <p className="text-lg">
-              The service will be a non intrusive collection approach. The pilot is to begin requesting samples
+              The service will be a non intrusive collection approach and will
+              require a shed sample. The pilot is to begin requesting samples
               from collectors that wish to participate.
             </p>
-            <div className="whitespace-nowrap mt-20">
-              <Link
-                className="py-4 px-6 mr-4 cursor-pointer rounded-full w-28 bg-blue-500 text-white lg:text-lg"
-                href={"https://www.instagram.com/geckogen"} target="_blank">
-                Contact Us for more information
-              </Link>
-            </div>
           </div>
         </div>
-        <div className="flex justify-center items-center">
+        <div className="flex justify-center items-end">
           <img
-            className="object-cover h-[20rem] w-[25rem] lg:h-[30rem] lg:w-[70rem] rounded-full mb-20"
-            src="/dna-geckogen.webp"
+            className="object-cover h-[20rem] w-[25rem] lg:h-[30rem] lg:w-[70rem]"
+            src="/gecko-dna-section.png"
             alt=""
           />
         </div>
       </div>
 
-      {/* Featured Products */}
+      {/*
+      {
+        // Featured Products 
+      }
       <div className="py-14">
         <div className="flex justify-center mt-4">
           <div className="w-8/12 md:w-8/12 text-center">
@@ -113,7 +110,9 @@ export default function Home() {
         </div>
         <div className="flex justify-center py-10">
           <div className="w-8/12 md:w-10/12 flex flex-wrap justify-center gap-5 gap-y-12">
-            {/* Gecko 1 */}
+            {
+              // Gecko 1
+            }
             <ProductCard
               productId="prod_P3dqsxunfez7bg"
               productTitle="Full Pin Extreme C19"
@@ -121,7 +120,9 @@ export default function Home() {
               productPrice={320}
             />
 
-            {/* Gecko 2 */}
+            {
+              // Gecko 2
+            }
             <ProductCard
               productId="prod_P3dFNDH77Hs7Og"
               productTitle="Red Stripe G24"
@@ -129,7 +130,9 @@ export default function Home() {
               productPrice={180}
             />
 
-            {/* Gecko 3 */}
+            {
+              // Gecko 3
+            }
             <ProductCard
               productId="prod_P3cqKug3rGhkgZ"
               productTitle="Wide Back F G11"
@@ -149,6 +152,7 @@ export default function Home() {
           </div>
         </div>
       </div>
+    */}
 
       {/* Our Specimens */}
       <div className="bg-black md:h-[40rem] md:flex md:flex-row-reverse">
