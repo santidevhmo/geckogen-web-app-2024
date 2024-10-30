@@ -7,11 +7,36 @@ const reenieBeanie = Reenie_Beanie({
   subsets: ['latin']
 });
 
+
+
 export default function Home() {
   return (
     <div>
       {/* Geckogen */}
-      <div className="lg:flex lg:h-[48rem] lg:justify-end">
+      <div className="flex flex-col items-center justify-center text-left bg-white py-40 px-4 sm:px-6 lg:px-8">
+        <h1 className="font-custom text-7xl">
+          Changing the mentality from “pet ownership” to a “partnership” by focusing on the
+          preservation of non-human species.
+        </h1>
+        <div className="relative w-48 h-48 mb-6">
+          <img
+            src="/geckoBlueHero.jpeg"
+            alt="A non-human species (example: gecko)"
+            className="rounded-full object-cover w-full h-full"
+          />
+        </div>
+        <p className="text-lg text-gray-600 mb-8">
+          A partnership where we become guardians rather than owners by using science to improve
+          conditions for all living things.
+        </p>
+        <p className={`${reenieBeanie.className} text-3xl mb-10`}>
+          Edgar A. Machuca Sahagun
+        </p>
+        <button className="bg-black text-white py-3 px-8 rounded-full text-lg hover:bg-gray-800 transition">
+          Shop now
+        </button>
+      </div>
+      {/* <div className="lg:flex lg:h-[48rem] lg:justify-end">
         <div className="flex justify-center lg:justify-end pt-32 lg:pt-52">
           <div className="w-8/12 text-left lg:text-left">
             <p className="text-5xl mb-5 md:text-6xl lg:text-7xl">Geckogen</p>
@@ -43,7 +68,7 @@ export default function Home() {
             />
           </div>
         </div>
-      </div>
+      </div> */}
 
       {/* Science in your hands */}
       <div className="h-[55rem] bg-black lg:bg-[url(/science-ball.gif)] lg:bg-cover lg:bg-center">

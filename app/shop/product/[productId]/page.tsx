@@ -13,6 +13,7 @@ const getProductData = async (productId: string) => {
 };
 
 const Product = async ({ params }: { params: { productId: string } }) => {
+  
   const product = await getProductData(params.productId);
 
   return (
@@ -63,10 +64,11 @@ const Product = async ({ params }: { params: { productId: string } }) => {
 
           <div className="hidden lg:block w-[30rem]">
             <div className="space-y-1 pb-7">
-              <p className="text-2xl md:text-3xl">{product.productName}</p>
-              <p className="text-xl md:text-2xl">
+              <h1 className="text-5xl pt-12">{product.productName}</h1>
+              <p className="">
                 ${product.productPrice / 100}
               </p>
+              
             </div>
 
             <div className="pt-4 text-base text-gray-600 w-fit">

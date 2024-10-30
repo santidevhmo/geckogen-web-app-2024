@@ -6,6 +6,17 @@ body {
   overflow-x: hidden; /* Hide horizontal scrollbar */
 }
 
+/* Product Sans Font */
+@font-face {
+  font-family: 'ProductSansLight';
+  src: url('../public/fonts/ProductSansLight/FontsFree-Net-ProductSans-Light.ttf') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+}
+
+
+/* Add more font-face rules as needed for each style */
+
 @layer utilities {
   .scrollbar::-webkit-scrollbar {
     width: 10px;
