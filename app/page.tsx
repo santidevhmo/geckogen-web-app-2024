@@ -12,30 +12,39 @@ const reenieBeanie = Reenie_Beanie({
 export default function Home() {
   return (
     <div>
+
       {/* Geckogen */}
-      <div className="flex flex-col items-center justify-center text-left bg-white py-40 px-4 sm:px-6 lg:px-8">
-        <h1 className="font-custom text-7xl">
-          Changing the mentality from “pet ownership” to a “partnership” by focusing on the
-          preservation of non-human species.
-        </h1>
-        <div className="relative w-48 h-48 mb-6">
-          <img
-            src="/geckoBlueHero.jpeg"
-            alt="A non-human species (example: gecko)"
-            className="rounded-full object-cover w-full h-full"
-          />
+      <div className="items-center justify-center bg-white py-28 px-4 sm:px-6 lg:px-8">
+        <div className="flex flex-col lg:flex-row lg:items-center lg:gap-8">
+          {/* Image */}
+          <div className="flex-shrink-0 h-60 lg:h-full lg:self-start mb-6 lg:mb-0 lg:ml-8 lg:w-1/4 lg:max-w-xs">
+            <img
+              src="/geckoBlueHero.jpeg"
+              alt="A non-human species (example: gecko)"
+              className="rounded-2xl object-cover w-full h-full"
+            />
+          </div>
+
+          {/* Text Content */}
+          <div className="flex flex-col items-center lg:items-start px-5 md:px-5 mt-6">
+            <h1 className="font-custom text-4xl md:text-5xl lg:text-6xl leading-tight text-center lg:text-left">
+              Changing the mentality from “pet ownership” to a “partnership” by focusing on the
+              preservation of non-human species.
+            </h1>
+            <p className="text-center text-md text-gray-600 mt-6 mb-8">
+              A partnership where we become guardians rather than owners by using science to improve
+              conditions for all living things.
+            </p>
+            <p className={`${reenieBeanie.className} text-3xl mb-10  text-center`}>
+              Edgar A. Machuca Sahagun
+            </p>
+            <button className="bg-black text-white py-3 px-8 rounded-full text-lg hover:bg-gray-700 transition">
+              Shop now
+            </button>
+          </div>
         </div>
-        <p className="text-lg text-gray-600 mb-8">
-          A partnership where we become guardians rather than owners by using science to improve
-          conditions for all living things.
-        </p>
-        <p className={`${reenieBeanie.className} text-3xl mb-10`}>
-          Edgar A. Machuca Sahagun
-        </p>
-        <button className="bg-black text-white py-3 px-8 rounded-full text-lg hover:bg-gray-800 transition">
-          Shop now
-        </button>
       </div>
+
       {/* <div className="lg:flex lg:h-[48rem] lg:justify-end">
         <div className="flex justify-center lg:justify-end pt-32 lg:pt-52">
           <div className="w-8/12 text-left lg:text-left">
