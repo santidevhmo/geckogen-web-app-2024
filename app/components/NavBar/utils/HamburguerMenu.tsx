@@ -16,6 +16,15 @@ const HamburguerMenu = (props: HamburguerMenuProps) => {
   return (
     <div className={`${!toggle && "hidden"} lg:hidden px-6 mt-2 mb-8`}>
       <ul className="text-center space-y-1">
+      <li>
+          <Link
+            className="block hover:text-blue-500 hover:bg-[#F4F4F4] py-2 rounded"
+            href={"/blog"}
+            onClick={() => setToggle(false)}
+          >
+            Blog
+          </Link>
+        </li>
         <li>
           <Link
             className="block hover:text-blue-500 hover:bg-[#F4F4F4] py-2 rounded"

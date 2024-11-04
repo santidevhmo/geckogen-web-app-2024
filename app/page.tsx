@@ -7,11 +7,45 @@ const reenieBeanie = Reenie_Beanie({
   subsets: ['latin']
 });
 
+
+
 export default function Home() {
   return (
     <div>
+
       {/* Geckogen */}
-      <div className="lg:flex lg:h-[48rem] lg:justify-end">
+      <div className="items-center justify-center bg-white py-28 px-4 sm:px-6 lg:px-8">
+        <div className="flex flex-col lg:flex-row lg:items-center lg:gap-8">
+          {/* Image */}
+          <div className="flex-shrink-0 h-60 lg:h-full lg:self-start mb-6 lg:mb-0 lg:ml-8 lg:w-1/4 lg:max-w-xs">
+            <img
+              src="/geckoBlueHero.jpeg"
+              alt="A non-human species (example: gecko)"
+              className="rounded-2xl object-cover w-full h-full"
+            />
+          </div>
+
+          {/* Text Content */}
+          <div className="flex flex-col items-center lg:items-start px-5 md:px-5 mt-6">
+            <h1 className="font-custom text-4xl md:text-5xl lg:text-6xl leading-tight text-center lg:text-left">
+              Changing the mentality from “pet ownership” to a “partnership” by focusing on the
+              preservation of non-human species.
+            </h1>
+            <p className="text-center text-md text-gray-600 mt-6 mb-8">
+              A partnership where we become guardians rather than owners by using science to improve
+              conditions for all living things.
+            </p>
+            <p className={`${reenieBeanie.className} text-3xl mb-10  text-center`}>
+              Edgar A. Machuca Sahagun
+            </p>
+            <button className="bg-black text-white py-3 px-8 rounded-full text-lg hover:bg-gray-700 transition">
+              Shop now
+            </button>
+          </div>
+        </div>
+      </div>
+
+      {/* <div className="lg:flex lg:h-[48rem] lg:justify-end">
         <div className="flex justify-center lg:justify-end pt-32 lg:pt-52">
           <div className="w-8/12 text-left lg:text-left">
             <p className="text-5xl mb-5 md:text-6xl lg:text-7xl">Geckogen</p>
@@ -43,7 +77,7 @@ export default function Home() {
             />
           </div>
         </div>
-      </div>
+      </div> */}
 
       {/* Science in your hands */}
       <div className="h-[55rem] bg-black lg:bg-[url(/science-ball.gif)] lg:bg-cover lg:bg-center">
@@ -104,7 +138,10 @@ export default function Home() {
         </div>
       </div>
 
-      {/* Featured Products */}
+      {/*
+      {
+        // Featured Products 
+      }
       <div className="py-14">
         <div className="flex justify-center mt-4">
           <div className="w-8/12 md:w-8/12 text-center">
@@ -113,7 +150,9 @@ export default function Home() {
         </div>
         <div className="flex justify-center py-10">
           <div className="w-8/12 md:w-10/12 flex flex-wrap justify-center gap-5 gap-y-12">
-            {/* Gecko 1 */}
+            {
+              // Gecko 1
+            }
             <ProductCard
               productId="prod_P3dqsxunfez7bg"
               productTitle="Full Pin Extreme C19"
@@ -121,7 +160,9 @@ export default function Home() {
               productPrice={320}
             />
 
-            {/* Gecko 2 */}
+            {
+              // Gecko 2
+            }
             <ProductCard
               productId="prod_P3dFNDH77Hs7Og"
               productTitle="Red Stripe G24"
@@ -129,7 +170,9 @@ export default function Home() {
               productPrice={180}
             />
 
-            {/* Gecko 3 */}
+            {
+              // Gecko 3
+            }
             <ProductCard
               productId="prod_P3cqKug3rGhkgZ"
               productTitle="Wide Back F G11"
@@ -149,6 +192,7 @@ export default function Home() {
           </div>
         </div>
       </div>
+    */}
 
       {/* Our Specimens */}
       <div className="bg-black md:h-[40rem] md:flex md:flex-row-reverse">
