@@ -3,6 +3,11 @@ import Image from "next/image";
 import BuyButton from "./buyButton";
 
 const getProductData = async (productId: string) => {
+
+  console.log("DOMAIN:", process.env.DOMAIN);  // Log the DOMAIN value
+  const apiUrl = `${process.env.DOMAIN}`;
+  console.log("API URL:", apiUrl);  // Log the constructed API URL
+
   const response = await fetch(
     `${process.env.DOMAIN}/api/product?id=${productId}`,
     { next: { revalidate: 86400 } }
