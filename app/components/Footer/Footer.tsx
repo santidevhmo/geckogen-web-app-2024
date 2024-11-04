@@ -1,4 +1,5 @@
 import Link from "next/link";
+import MorphMarketButton from "../MorphMarketBtn/MorphMarketBtn";
 
 const Footer = () => {
   return (
@@ -22,13 +23,24 @@ const Footer = () => {
           <p>Geckogen</p>
           <p>San Jose, California, US</p>
         </div>
-        <div className="flex items-center gap-4">
-          <div className="bg-black w-11 h-11 p-2 rounded">
+        <div className="flex gap-4">
+          <div className="flex items-center bg-black rounded-lg h-11 w-30">
+            <Link href="https://www.morphmarket.com/" passHref>
+              <button className="flex justify-center py-1.5 px-2 w-[100px] h-[35px]">
+                <img
+                  src="/MorphMarketWhite.webp"
+                  alt="Morph Market Logo"
+                  className="w-[full] h-full object-contain"
+                />
+              </button>
+            </Link>
+          </div>
+          <div className="bg-black w-11 h-11 p-2 rounded-lg">
             <a href={"https://www.instagram.com/geckogen"} target="_blank">
               <img src="/insta-icon.png" alt="instagram-icon" />
             </a>
           </div>
-          <div className="bg-black w-11 h-11 p-2 rounded">
+          <div className="bg-black w-11 h-11 p-2 rounded-lg">
             <a href={"https://www.facebook.com/Geckogenlabs"} target="_blank">
               <img src="/facebook-icon.png" alt="facebook-icon" />
             </a>
