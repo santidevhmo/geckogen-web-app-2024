@@ -4,12 +4,10 @@ import BuyButton from "./buyButton";
 
 const getProductData = async (productId: string) => {
 
-  console.log("DOMAIN:", process.env.DOMAIN);  // Log the DOMAIN value
   const apiUrl = `${process.env.DOMAIN}`;
-  console.log("API URL:", apiUrl);  // Log the constructed API URL
 
   const response = await fetch(
-    `${process.env.DOMAIN}/api/product?id=${productId}`,
+    `${process.env.VERCEL_URL}/api/product?id=${productId}`,
     { next: { revalidate: 86400 } }
   );
   if (!response.ok) {
@@ -71,7 +69,7 @@ const Product = async ({ params }: { params: { productId: string } }) => {
             <div style={{ marginTop: 12 }} className="grid grid-cols-1 md:grid-cols-2 gap-3 m-0 w-full">
               <div className="text-base text-black bg-gray-100 px-8 py-4 rounded-2xl w-full">
                 <p className="text-sm text-gray-500">Hatched Date:</p>
-                <p className="text-lg">{product.hatchedDate ?? "N/A"}</p>
+                <p className="text-lg">{product.hatchedDate ?? "N/A"}g</p>
               </div>
               <div className="text-base text-black bg-gray-100 px-8 py-4 rounded-2xl w-full">
                 <p className="text-sm text-gray-500">Weight:</p>
