@@ -11,8 +11,8 @@ const Footer = () => {
           </div>
           <div className="mb-5 text-xs">
             <p>Mail</p>
-            <Link href={"mailto:edgar@geckogen.com"}>
-              <p className="text-lg">edgar@geckogen.com</p>
+            <Link href={"mailto:edgatron@comcast.net"}>
+              <p className="text-lg">edgatron@comcast.net</p>
             </Link>
           </div>
         </div>

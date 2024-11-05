@@ -4,12 +4,12 @@ import BuyButton from "./buyButton";
 
 const getProductData = async (productId: string) => {
   const response = await fetch(
-    `${process.env.DOMAIN}/api/product?id=${productId}`,
-    { next: { revalidate: 86400 } }
-  );
+    `${process.env.DOMAIN}/api/product?id=${productId}`
+  ,{ next: { revalidate: 86400 } });
   if (!response.ok) {
     throw new Error("Failed to fetch data");
   }
+
   return response.json();
 };
 
@@ -66,7 +66,7 @@ const Product = async ({ params }: { params: { productId: string } }) => {
             <div style={{ marginTop: 12 }} className="grid grid-cols-1 md:grid-cols-2 gap-3 m-0 w-full">
               <div className="text-base text-black bg-gray-100 px-8 py-4 rounded-2xl w-full">
                 <p className="text-sm text-gray-500">Hatched Date:</p>
-                <p className="text-lg">{product.hatchedDate ?? "N/A"}</p>
+                <p className="text-lg">{product.hatchedDate ?? "N/A"}g</p>
               </div>
               <div className="text-base text-black bg-gray-100 px-8 py-4 rounded-2xl w-full">
                 <p className="text-sm text-gray-500">Weight:</p>
