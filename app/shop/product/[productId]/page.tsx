@@ -4,15 +4,18 @@ import BuyButton from "./buyButton";
 
 const getProductData = async (productId: string) => {
 
-  const apiUrl = `${process.env.DOMAIN}`;
+  const apiUrl = process.env.VERCEL_URL
+    ? `https://${process.env.VERCEL_URL}/api/product?id=${productId}`
+    : `${process.env.DOMAIN}/api/product?id=${productId}`;
 
-  const response = await fetch(
-    `${process.env.VERCEL_URL}/api/product?id=${productId}`,
-    { next: { revalidate: 86400 } }
-  );
+  const response = await fetch(apiUrl, {
+    next: { revalidate: 86400 },
+  });
+
   if (!response.ok) {
     throw new Error("Failed to fetch data");
   }
+
   return response.json();
 };
 
