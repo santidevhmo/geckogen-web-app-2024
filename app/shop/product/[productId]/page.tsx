@@ -2,20 +2,23 @@ import Link from "next/link";
 import Image from "next/image";
 import BuyButton from "./buyButton";
 
+
 const getProductData = async (productId: string) => {
+  // Use `VERCEL_URL` in production, fallback to `NEXT_PUBLIC_DOMAIN` for local development
+  const baseUrl = process.env.VERCEL_URL
+    ? `https://${process.env.VERCEL_URL}`
+    : process.env.NEXT_PUBLIC_DOMAIN;
 
-  const apiUrl = process.env.VERCEL_URL
-    ? `https://${process.env.VERCEL_URL}/api/product?id=${productId}`
-    : `${process.env.DOMAIN}/api/product?id=${productId}`;
+  if (!baseUrl) {
+    throw new Error("Base URL is not defined. Check environment variables.");
+  }
 
-  const response = await fetch(apiUrl, {
-    next: { revalidate: 86400 },
-  });
+  const apiUrl = `${baseUrl}/api/product?id=${productId}`;
+  const response = await fetch(apiUrl, { next: { revalidate: 86400 } });
 
   if (!response.ok) {
     throw new Error("Failed to fetch data");
   }
-
   return response.json();
 };
 
