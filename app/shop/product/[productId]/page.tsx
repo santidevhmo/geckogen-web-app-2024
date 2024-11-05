@@ -4,7 +4,7 @@ import BuyButton from "./buyButton";
 
 const getProductData = async (productId: string) => {
   const response = await fetch(
-    `${process.env.NEXT_PUBLIC_DOMAIN}/api/product?id=${productId}`
+    `${process.env.DOMAIN}/api/product?id=${productId}`
   ,{ next: { revalidate: 86400 } });
   if (!response.ok) {
     throw new Error("Failed to fetch data");
