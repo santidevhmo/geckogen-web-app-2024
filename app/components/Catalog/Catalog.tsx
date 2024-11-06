@@ -10,66 +10,56 @@ const LazyProductCard = React.lazy(() => import("../ProductCard/ProductCard"));
 
 const fetcher = async (url: string) => {
   const response = await fetch(url);
-  return response.json()
+  return response.json();
 };
 
 const Catalog = () => {
   const [filteredItems, setFilteredItems] = useState<Stripe.Product[]>([]);
   const { selectedFilters } = useFiltersContext();
 
-  const { data: catalog } : { data : Stripe.Product[] } = useSWR(
-    "/api/catalog",
-    fetcher
-  );
+  const { data: catalog }: { data: Stripe.Product[] } = useSWR("/api/catalog", fetcher);
 
   useEffect(() => {
     if (catalog) {
       filterItems();
     }
-  }, [selectedFilters, catalog])
+  }, [selectedFilters, catalog]);
 
   if (!catalog) {
-    // Data is still loading, return loading state or spinner
-    return <Loading/>;
+    return <Loading />;
   }
 
   function filterItems() {
     if (selectedFilters.length > 0) {
-      let tempItems = selectedFilters.map((selectedCategory) => {
-        let temp = catalog.filter(
-          (product) => product.metadata.category === selectedCategory
-        );
-        return temp;
+      const tempItems = catalog.filter(product => {
+        const productCategory = product.metadata?.category;
+        return productCategory && selectedFilters.includes(productCategory);
       });
-      setFilteredItems(tempItems.flat());
+      setFilteredItems(tempItems);
     } else {
       setFilteredItems(catalog);
     }
   }
 
-  function getPriceFromProduct(
-    product: Stripe.Product
-  ): Stripe.Price {
-    // Check if default_price exists and is an object
-    return product.default_price as Stripe.Price;
+  function getPriceFromProduct(product: Stripe.Product): number {
+    const price = product.default_price as Stripe.Price;
+    return price?.unit_amount ? price.unit_amount / 100.0 : 0;
   }
-  
+
   return (
-    <div className="lg:px-6 mt-1 grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-x-1 lg:gap-x-4 gap-y-12">
-      {filteredItems.map((product) => {
-        const price = getPriceFromProduct(product);
-        return (
-          <Suspense key={product.id} fallback={<ProductCardSkeleton />}>
-            <LazyProductCard
-              productId={product.id}
-              productImage={product.images[0]}
-              productTitle={product.name}
-              productPrice={price && price.unit_amount ? price.unit_amount / 100.0 : 0}
-            />
-          </Suspense>
-        );
-      })}
-    </div>
+    <Suspense fallback={<ProductCardSkeleton />}>
+      <div className="w-full max-w-none px-4 mt-1 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-x-4 gap-y-8 overflow-hidden">
+        {filteredItems.map((product) => (
+          <LazyProductCard
+            key={product.id}
+            productId={product.id}
+            productImage={product.images[0] || "/default-image.webp"}
+            productTitle={product.name}
+            productPrice={getPriceFromProduct(product)}
+          />
+        ))}
+      </div>
+    </Suspense>
   );
 };
 

@@ -25,7 +25,7 @@ export default function Shop() {
         <div className="lg:flex lg:items-start pt-[8.5rem]">
           {showSideFilters && <FilterSideBar filterCount={selectedFilters.length} />}
           {showFilters && <FilterBar setShowFilters={setShowFilters} />}
-          <div className="flex w-full justify-center mb-8">
+          <div className="w-full justify-center mb-8">
             <div>
               <FilterHeader />
               <Catalog />

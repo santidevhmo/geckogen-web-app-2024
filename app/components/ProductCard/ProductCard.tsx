@@ -8,29 +8,25 @@ interface ProductCardProps {
   productPrice: number;
 }
 
-const ProductCard = (props: ProductCardProps) => {
-  const { productId, productImage, productTitle, productPrice } = props;
-  return (
-    <div className="w-full max-w-[300px]">
-      <Link href={`shop/product/${productId}`} prefetch={false}>
-        <div className="relative w-full aspect-[1/1] overflow-hidden bg-grey-200 lg:rounded-sm">
-          <Image
-            className="object-cover"
-            src={productImage}
-            alt="Product image"
-            fill // Sets the image to fill the parent container
-            sizes="300px"
-          />
-        </div>
-        <div className="pt-4 px-2 lg:px-0">
-          <p className="text-lg font-medium">{productTitle}</p>
-          <div className="flex items-start text-base">
-            <p className="text-sm">${(productPrice)} USD</p>
-          </div>
-        </div>
-      </Link>
-    </div>
-  );
-};
+const ProductCard = ({ productId, productImage, productTitle, productPrice }: ProductCardProps) => (
+  <div className="w-full">
+    <Link href={`/shop/product/${productId}`} prefetch={false}>
+      {/* Set the outer container to maintain a square aspect ratio */}
+      <div className="w-full aspect-square relative overflow-hidden bg-gray-100 rounded-md">
+        <Image
+          className="object-cover w-full h-full"  // Ensures the image fills the container
+          src={productImage}
+          alt={productTitle}
+          layout="fill"  // Let Next.js handle responsive image scaling
+          onError={(e) => (e.currentTarget.src = "/default-image.webp")}
+        />
+      </div>
+      <div className="p-2 text-center">
+        <p className="text-base font-medium">{productTitle}</p>
+        <p className="text-sm">${productPrice.toFixed(2)} USD</p>
+      </div>
+    </Link>
+  </div>
+);
 
 export default ProductCard;

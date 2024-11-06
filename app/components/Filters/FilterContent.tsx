@@ -5,17 +5,18 @@ const FilterContent = () => {
     <div className="w-full">
       <Accordion
         title="DNA Products"
-        content={["Fenotype Test", "Genotype Test", "Sexing Test"]}
+        content={["Porcelio", "Complete Meal Formula"]}
       />
       <Accordion
         title="Gecko Species"
         content={[
-                  "Correlophus ciliatus (Crested Gecko)", 
-                  "Rhacodactylus auriculatus (Gargoyle gecko)", 
-                  "Mniarogekko (Chahoua)"]}
+                  "C-Species", 
+                  "G-Species" 
+                  // "Mniarogekko (Chahoua)"]}
+                  ]}
       />
-      <Accordion title="Microfauna" content={["Isopods"]} />
-      <Accordion title="Others" content={["Apparel", "Complete Meal Formula"]} />
+      <Accordion title="Microfauna" content={["Isopod", "Springtail"]} />
+      <Accordion title="Apparel" content={["T-shirt", "Hat"]} />
     </div>
   );
 };
