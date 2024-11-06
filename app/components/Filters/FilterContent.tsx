@@ -5,7 +5,7 @@ const FilterContent = () => {
     <div className="w-full">
       <Accordion
         title="DNA Products"
-        content={["Porcelio", "Complete Meal Formula"]}
+        content={["Porcellio", "Complete Meal Formula"]}
       />
       <Accordion
         title="Gecko Species"

@@ -40,6 +40,7 @@ const Catalog = () => {
       setFilteredItems(catalog);
     }
   }
+  
 
   function getPriceFromProduct(product: Stripe.Product): number {
     const price = product.default_price as Stripe.Price;

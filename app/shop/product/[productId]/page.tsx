@@ -3,15 +3,23 @@ import Image from "next/image";
 import BuyButton from "./buyButton";
 
 const getProductData = async (productId: string) => {
-  const response = await fetch(
-    `${process.env.DOMAIN}/api/product?id=${productId}`
-  ,{ next: { revalidate: 86400 } });
-  if (!response.ok) {
-    throw new Error("Failed to fetch data");
-  }
+  try {
+    const response = await fetch(
+      `${process.env.DOMAIN}/api/product?id=${productId}`,
+      { next: { revalidate: 86400 } }
+    );
 
-  return response.json();
+    if (!response.ok) {
+      throw new Error(`Failed to fetch data: ${response.statusText}`);
+    }
+
+    return response.json();
+  } catch (error) {
+    console.error("Error fetching product data:", error);
+    throw error;
+  }
 };
+
 
 const Product = async ({ params }: { params: { productId: string } }) => {
   const product = await getProductData(params.productId);
