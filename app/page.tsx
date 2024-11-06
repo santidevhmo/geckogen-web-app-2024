@@ -38,9 +38,11 @@ export default function Home() {
             <p className={`${reenieBeanie.className} text-3xl mb-10  text-center`}>
               Edgar A. Machuca Sahagun
             </p>
-            <button className="bg-black text-white py-3 px-8 rounded-full text-lg hover:bg-gray-700 transition">
-              Shop now
-            </button>
+            <a href="https://gecko-gen.com/shop">
+              <button className="bg-black text-white py-3 px-8 rounded-full text-lg hover:bg-gray-700 transition">
+                Shop now
+              </button>
+            </a>
           </div>
         </div>
       </div>
