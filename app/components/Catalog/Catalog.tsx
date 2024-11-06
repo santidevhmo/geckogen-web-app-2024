@@ -20,6 +20,7 @@ const Catalog = () => {
   const { data: catalog }: { data: Stripe.Product[] } = useSWR("/api/catalog", fetcher);
 
   useEffect(() => {
+    console.log("Catalog data:", catalog);
     if (catalog) {
       filterItems();
     }
@@ -33,6 +34,7 @@ const Catalog = () => {
     if (selectedFilters.length > 0) {
       const tempItems = catalog.filter(product => {
         const productCategory = product.metadata?.category;
+        console.log("Product Category:", productCategory);
         return productCategory && selectedFilters.includes(productCategory);
       });
       setFilteredItems(tempItems);

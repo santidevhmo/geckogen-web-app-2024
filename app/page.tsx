@@ -83,9 +83,9 @@ export default function Home() {
       <div className="h-[55rem] bg-black lg:bg-[url(/science-ball.gif)] lg:bg-cover lg:bg-center">
         <div className="h-full flex flex-col justify-center items-center space-y-8 lg:bg-black/50">
           <div className="flex justify-center items-center">
-            <div className="w-8/12 md:w-7/12 text-gray-200 text-left lg:text-center lg:w-96">
-              <p className="text-5xl mb-5 md:text-6xl">Science in your hands</p>
-              <p className="text-lg">
+            <div className="w-8/12 md:w-7/12 text-gray-200 lg:text-center lg:w-96">
+              <p className="text-5xl mb-5 md:text-6xl text-center">Science in your hands</p>
+              <p className="text-lg text-center">
                 Our primary focus is to offer a vast diversity of gecko morphs
                 while providing a healthy and vigorous specimen.
               </p>
@@ -105,33 +105,37 @@ export default function Home() {
       <div className="bg-black lg:flex lg:h-[54rem]" id="DNA">
         <div className="flex justify-center pt-24 text-gray-200">
           <div className="w-8/12 md:w-8/12">
-            <p className="text-5xl mb-5 md:text-6xl">DNA Sequencing Project</p>
-            <p className="text-lg">
+            <p className="text-5xl mb-5 md:text-6xl text-center lg:text-left">DNA Sequencing Project</p>
+            <p className="text-lg text-center lg:text-left">
               We are excited to announce our Crested gecko Sequencing project.
               The project aims to identify markers for crested gecko phenotypes.
             </p>
             <br />
-            <p className="text-lg">
+            <p className="text-lg text-center lg:text-left">
               A molecular certification ensuring the specimen carries the gene
               has become more important with the rise in morphs and prices.{" "}
             </p>
             <br />
-            <p className="text-lg">
+            <p className="text-lg text-center lg:text-left">
               The service will be a non intrusive collection approach. The pilot is to begin requesting samples
               from collectors that wish to participate.
             </p>
-            <div className="whitespace-nowrap mt-20">
-              <Link
-                className="py-4 px-6 mr-4 cursor-pointer rounded-full w-28 bg-blue-500 text-white lg:text-lg"
-                href={"https://www.instagram.com/geckogen"} target="_blank">
-                Contact Us for more information
-              </Link>
+            <div className="flex justify-center mt-20">
+              <div className="whitespace-nowrap">
+                <Link
+                  className="py-4 px-6 mr-4 cursor-pointer rounded-full w-28 bg-blue-500 text-white lg:text-lg text-center"
+                  href={"https://www.instagram.com/geckogen"}
+                  target="_blank"
+                >
+                  Contact Us for more information
+                </Link>
+              </div>
             </div>
           </div>
         </div>
         <div className="flex justify-center items-center">
           <img
-            className="object-cover h-[20rem] w-[25rem] lg:h-[30rem] lg:w-[70rem] rounded-full mb-20"
+            className="object-cover h-[20rem] w-[25rem] lg:h-[30rem] lg:w-[70rem] rounded-full mb-20 mt-20 sm:mt=0"
             src="/dna-geckogen.webp"
             alt=""
           />
@@ -214,7 +218,7 @@ export default function Home() {
         </div>
         <div className="pb-14 flex items-center lg:pb-24">
           <img
-            className="w-96 h-96 md:w-[50rem] md:h-auto"
+            className="w-96 h-96 md:w-[50rem] md:h-auto rotate-45 mt-40"
             src="/side-profile-gecko.png"
             alt=""
           />

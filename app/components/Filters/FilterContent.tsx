@@ -15,7 +15,7 @@ const FilterContent = () => {
                   // "Mniarogekko (Chahoua)"]}
                   ]}
       />
-      <Accordion title="Microfauna" content={["Isopod", "Springtail"]} />
+      <Accordion title="Microfauna" content={["Isopods", "Springtail"]} />
       <Accordion title="Apparel" content={["T-shirt", "Hat"]} />
     </div>
   );
