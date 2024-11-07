@@ -109,7 +109,7 @@ export default function Home() {
           <div className="w-8/12 md:w-8/12">
             <p className="text-5xl mb-5 md:text-6xl text-center lg:text-left">DNA Sequencing Project</p>
             <p className="text-lg text-center lg:text-left">
-              We are excited to announce our Crested gecko Sequencing project.
+              We are excited to announce our Crested Gecko Sequencing Project.
               The project aims to identify markers for crested gecko phenotypes.
             </p>
             <br />
@@ -119,7 +119,7 @@ export default function Home() {
             </p>
             <br />
             <p className="text-lg text-center lg:text-left">
-              The service will be a non intrusive collection approach. The pilot is to begin requesting samples
+              The service will be a non intrusive collection approach. For the pilot program, we will begin requesting samples
               from collectors that wish to participate.
             </p>
             <div className="flex justify-center mt-20">

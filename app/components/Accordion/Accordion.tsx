@@ -5,12 +5,12 @@ import { useFiltersContext } from "../Filters/FiltersContext";
 
 interface AccordionProps {
   title: string;
-  content?: string[];
+  content?: (string | { title: string })[];
 }
+
 const Accordion = (props: AccordionProps) => {
   const { title, content } = props;
   const { selectedFilters, setSelectedFilters } = useFiltersContext();
-
   const [isOpen, setIsOpen] = useState(true);
 
   const handleFilterButtonClick = (selectedFilter: string) => {
@@ -27,9 +27,7 @@ const Accordion = (props: AccordionProps) => {
       <div className="border-b pb-2">
         <div
           className="flex justify-between items-center cursor-pointer"
-          onClick={() => {
-            setIsOpen(!isOpen);
-          }}
+          onClick={() => setIsOpen(!isOpen)}
         >
           <div className="flex-1">{title}</div>
           <div>
@@ -44,21 +42,38 @@ const Accordion = (props: AccordionProps) => {
         {isOpen && content && (
           <div className="pt-3 pl-3">
             {content.map((filterOption, idx) => {
-              return (
-                <div className="py-1 space-x-2 text-base text-gray-600" key={idx}>
-                  <input
-                    className="cursor-pointer accent-black"
-                    type="checkbox"
-                    checked={selectedFilters.includes(filterOption)}
-                    id={filterOption}
-                    name={filterOption}
-                    onClick={() => {
-                      handleFilterButtonClick(filterOption)
-                    }}
-                  />
-                  <label>{filterOption}</label>
-                </div>
-              );
+              if (typeof filterOption === "string") {
+                // Render main filter option (e.g., "Microfauna")
+                return (
+                  <div className="py-1 space-x-2 text-base text-gray-600" key={idx}>
+                    <input
+                      className="cursor-pointer accent-black"
+                      type="checkbox"
+                      checked={selectedFilters.includes(filterOption)}
+                      id={filterOption}
+                      name={filterOption}
+                      onClick={() => handleFilterButtonClick(filterOption)}
+                    />
+                    <label>{filterOption}</label>
+                  </div>
+                );
+              } else if (typeof filterOption === "object" && filterOption.title) {
+                // Render sub-filter (e.g., "Springtail") with indentation
+                return (
+                  <div className="py-1 space-x-2 text-base text-gray-600 pl-4" key={idx}>
+                    <input
+                      className="cursor-pointer accent-black"
+                      type="checkbox"
+                      checked={selectedFilters.includes(filterOption.title)}
+                      id={filterOption.title}
+                      name={filterOption.title}
+                      onClick={() => handleFilterButtonClick(filterOption.title)}
+                    />
+                    <label>{filterOption.title}</label>
+                  </div>
+                );
+              }
+              return null;
             })}
           </div>
         )}
