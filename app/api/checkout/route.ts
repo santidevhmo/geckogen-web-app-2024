@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import Stripe from "stripe";
 import { auth } from "@clerk/nextjs";
 
-const stripe = new Stripe(process.env.NEXT_PUBLIC_STRIPE_API_SECRET_KEY as string, {
+const stripe = new Stripe(process.env.STRIPE_API_SECRET_KEY as string, {
   typescript: true,
   apiVersion: "2023-10-16"
 })
