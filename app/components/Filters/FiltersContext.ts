@@ -1,13 +1,18 @@
 import { createContext, useContext } from "react";
 
+export type FilterOption = {
+  species?: string;
+  sex?: string;
+};
+
 export type FiltersContextType = {
-  selectedFilters: string[]
-  setSelectedFilters: React.Dispatch<React.SetStateAction<string[]>>
-}
+  selectedFilters: FilterOption[];
+  setSelectedFilters: React.Dispatch<React.SetStateAction<FilterOption[]>>;
+};
 
 export const FiltersContext = createContext<FiltersContextType>({
   selectedFilters: [],
-  setSelectedFilters: () => {}
-})
+  setSelectedFilters: () => {},
+});
 
-export const useFiltersContext = () => useContext(FiltersContext)
+export const useFiltersContext = () => useContext(FiltersContext);

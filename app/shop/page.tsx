@@ -6,12 +6,13 @@ import Catalog from "../components/Catalog/Catalog";
 import FilterSideBar from "../components/Filters/FilterSideBar";
 import FilterHeader from "../components/FilterHeader.tsx/FilterHeader";
 import FilterBar from "../components/Filters/FilterBar";
-import { FiltersContext } from "../components/Filters/FiltersContext";
+import { FiltersContext, FilterOption } from "../components/Filters/FiltersContext";
 
 export default function Shop() {
   const [showSideFilters, setShowSideFilters] = useState(true);
   const [showFilters, setShowFilters] = useState(false);
-  const [selectedFilters, setSelectedFilters] = useState<string[]>([]);
+  // Change the type of selectedFilters to FilterOption[]
+  const [selectedFilters, setSelectedFilters] = useState<FilterOption[]>([]);
 
   return (
     <div className="h-auto">

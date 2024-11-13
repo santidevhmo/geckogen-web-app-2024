@@ -1,11 +1,9 @@
-"use client";
-
 import { useState } from "react";
-import { useFiltersContext } from "../Filters/FiltersContext";
+import { useFiltersContext, FilterOption } from "../Filters/FiltersContext"; // Import FilterOption
 
 interface AccordionProps {
   title: string;
-  content?: (string | { title: string })[];
+  content?: (string | { title: string; subFilters?: string[] })[];
 }
 
 const Accordion = (props: AccordionProps) => {
@@ -13,13 +11,50 @@ const Accordion = (props: AccordionProps) => {
   const { selectedFilters, setSelectedFilters } = useFiltersContext();
   const [isOpen, setIsOpen] = useState(true);
 
-  const handleFilterButtonClick = (selectedFilter: string) => {
-    if (selectedFilters.includes(selectedFilter)) {
-      let filters = selectedFilters.filter((el) => el !== selectedFilter);
-      setSelectedFilters(filters);
-    } else {
-      setSelectedFilters([...selectedFilters, selectedFilter]);
-    }
+  const handleFilterButtonClick = (filterOption: FilterOption) => {
+    setSelectedFilters((prevFilters) => {
+      const existingIndex = prevFilters.findIndex(
+        (filter) =>
+          filter.species === filterOption.species && filter.sex === filterOption.sex
+      );
+  
+      // If the exact filter (species + sex combination) is already selected, remove it
+      if (existingIndex !== -1) {
+        return prevFilters.filter((_, index) => index !== existingIndex);
+      }
+  
+      // If we are selecting a sub-filter (e.g., sex) and the main filter (species) is already selected,
+      // update that main filter to include the sub-filter (sex)
+      if (filterOption.sex) {
+        const mainFilterIndex = prevFilters.findIndex(
+          (filter) => filter.species === filterOption.species && !filter.sex
+        );
+  
+        if (mainFilterIndex !== -1) {
+          // Replace the main filter with the combined filter (species + sex)
+          const newFilters = [...prevFilters];
+          newFilters[mainFilterIndex] = filterOption;
+          return newFilters;
+        }
+      }
+  
+      // If we are selecting the main filter (species) and a sub-filter (sex) already exists for this species,
+      // replace the sub-filter entry with the main filter
+      if (filterOption.species && !filterOption.sex) {
+        const subFilterIndex = prevFilters.findIndex(
+          (filter) => filter.species === filterOption.species && filter.sex
+        );
+  
+        if (subFilterIndex !== -1) {
+          const newFilters = [...prevFilters];
+          newFilters[subFilterIndex] = filterOption; // Replace with the main filter
+          return newFilters;
+        }
+      }
+  
+      // Otherwise, add the new filter option to the list
+      return [...prevFilters, filterOption];
+    });
   };
 
   return (
@@ -43,33 +78,43 @@ const Accordion = (props: AccordionProps) => {
           <div className="pt-3 pl-3">
             {content.map((filterOption, idx) => {
               if (typeof filterOption === "string") {
-                // Render main filter option (e.g., "Microfauna")
                 return (
-                  <div className="py-1 space-x-2 text-base text-gray-600" key={idx}>
+                  <div key={idx} className="py-1 space-x-2 text-base text-gray-600">
                     <input
-                      className="cursor-pointer accent-black"
                       type="checkbox"
-                      checked={selectedFilters.includes(filterOption)}
-                      id={filterOption}
-                      name={filterOption}
-                      onClick={() => handleFilterButtonClick(filterOption)}
+                      checked={selectedFilters.some(filter => filter.species === filterOption)}
+                      onClick={() => handleFilterButtonClick({ species: filterOption })}
                     />
                     <label>{filterOption}</label>
                   </div>
                 );
               } else if (typeof filterOption === "object" && filterOption.title) {
-                // Render sub-filter (e.g., "Springtail") with indentation
                 return (
-                  <div className="py-1 space-x-2 text-base text-gray-600 pl-4" key={idx}>
+                  <div key={idx} className="py-1 space-x-2 text-base text-gray-600">
                     <input
-                      className="cursor-pointer accent-black"
                       type="checkbox"
-                      checked={selectedFilters.includes(filterOption.title)}
-                      id={filterOption.title}
-                      name={filterOption.title}
-                      onClick={() => handleFilterButtonClick(filterOption.title)}
+                      checked={selectedFilters.some(filter => filter.species === filterOption.title)}
+                      onClick={() => handleFilterButtonClick({ species: filterOption.title })}
                     />
                     <label>{filterOption.title}</label>
+                    {filterOption.subFilters && (
+                      <div className="pl-4">
+                        {filterOption.subFilters.map((subFilter, subIdx) => (
+                          <div key={subIdx} className="py-1 space-x-2 text-base text-gray-600">
+                            <input
+                              type="checkbox"
+                              checked={selectedFilters.some(
+                                filter => filter.species === filterOption.title && filter.sex === subFilter
+                              )}
+                              onClick={() =>
+                                handleFilterButtonClick({ species: filterOption.title, sex: subFilter })
+                              }
+                            />
+                            <label>{subFilter}</label>
+                          </div>
+                        ))}
+                      </div>
+                    )}
                   </div>
                 );
               }

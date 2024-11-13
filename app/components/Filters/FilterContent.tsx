@@ -7,17 +7,15 @@ const FilterContent = () => {
       <Accordion
         title="Gecko Species"
         content={[
-          "C (Crested) Species",
-          "C (Chahohua) Species",
-          "G (Gargoyle) Species",
-          "B (Blue Tongue Skink) Species"
+          { title: "C (Crested) Species", subFilters: ["Male", "Female", "Unsexed"] },
+          { title: "C (Chahohua) Species", subFilters: ["Male", "Female", "Unsexed"] },
+          { title: "G (Gargoyle) Species", subFilters: ["Male", "Female", "Unsexed"] },
+          { title: "B (Blue Tongue Skink) Species", subFilters: ["Male", "Female", "Unsexed"] },
         ]}
       />
-      <Accordion title="Isopods" content={["Porcellio"]} />
-      {/* Microfauna as a selectable filter with Springtail as its sub-filter */}
       <Accordion
         title="Microfauna"
-        content={["Microfauna", { title: "Springtail" }]}
+        content={["Isopods", "Microfauna", { title: "Springtail" }]}
       />
       <Accordion title="Apparel" content={["T-shirt", "Hat"]} />
     </div>

@@ -34,8 +34,14 @@ const Catalog = () => {
     if (selectedFilters.length > 0) {
       const tempItems = catalog.filter(product => {
         const productCategory = product.metadata?.category;
-        console.log("Product Category:", productCategory);
-        return productCategory && selectedFilters.includes(productCategory);
+        const productSex = product.metadata?.sex;
+  
+        // Check if any selected filter matches the product's metadata
+        return selectedFilters.some(filter => {
+          const matchesCategory = filter.species ? filter.species === productCategory : true;
+          const matchesSex = filter.sex ? filter.sex === productSex : true;
+          return matchesCategory && matchesSex;
+        });
       });
       setFilteredItems(tempItems);
     } else {
