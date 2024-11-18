@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link";
 import ProductCard from "./components/ProductCard/ProductCard";
 import { Reenie_Beanie } from 'next/font/google';
@@ -7,82 +9,108 @@ const reenieBeanie = Reenie_Beanie({
   subsets: ['latin']
 });
 
-
-
 export default function Home() {
   return (
     <div>
 
       {/* Geckogen */}
-      <div className="items-center justify-center bg-white py-28 px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col lg:flex-row lg:items-center lg:gap-8">
-          {/* Image */}
-          <div className="flex-shrink-0 h-60 lg:h-full lg:self-start mb-6 lg:mb-0 lg:ml-8 lg:w-1/4 lg:max-w-xs">
-            <img
-              src="/geckoBlueHero.jpeg"
-              alt="A non-human species (example: gecko)"
-              className="rounded-2xl object-cover w-full h-full"
-            />
-          </div>
+      <div className="items-center justify-center bg-white py-16 px-4 sm:px-6 lg:px-8"></div>
 
-          {/* Text Content */}
-          <div className="flex flex-col items-center lg:items-start px-5 md:px-5 mt-6">
-            <h1 className="font-custom text-4xl md:text-5xl lg:text-6xl leading-tight text-center lg:text-left">
-              Changing the mentality from “pet ownership” to a “partnership” by focusing on the
-              preservation of non-human species.
-            </h1>
-            <p className="text-center text-md text-gray-600 mt-6 mb-8">
-              A partnership where we become guardians rather than owners by using science to improve
-              conditions for all living things.
-            </p>
-            <p className={`${reenieBeanie.className} text-3xl mb-10  text-center`}>
-              Edgar A. Machuca Sahagun
-            </p>
-            <a href="https://gecko-gen.com/shop">
-              <button className="bg-black text-white py-3 px-8 rounded-full text-lg hover:bg-gray-700 transition">
-                Shop now
-              </button>
-            </a>
-          </div>
-        </div>
+      {/* New Hero Section */}
+      <div className="
+      relative 
+      w-11/12
+      mb-20 md:mb-36
+       mx-auto flex flex-col justify-center items-center overflow-visible
+      ">
+
+        {/* Video Background */}
+        <video
+          className="absolute top-0 left-0 w-full h-full object-cover rounded-3xl"
+          src="/GeckogenHeroVideo.mp4"
+          autoPlay
+          loop
+          muted
+        />
+
+        {/* Black Overlay */}
+        <div className="absolute top-0 left-0 w-full h-full bg-black/60 rounded-3xl"></div>
+
+        {/* Content */}
+        <h1 className="font-custom font-light 
+        text-3xl md:text-5xl lg:text-7xl 
+        leading-tight text-center text-white 
+        px-10 py-12 md:py-12 lg:py-32 z-10 
+        ">
+          Changing the mentality from “pet ownership” to a “partnership” by focusing on the
+          preservation of non-human species.
+        </h1>
+
+        {/* Blue Gecko Image */}
+        <img
+          src="/geckoBlueHero.jpeg"
+          alt="Descriptive Alt Text"
+          className="
+          absolute 
+          -bottom-10 -left-6 md:-bottom-20 lg:-bottom-12 md:-left-12 lg:-left-24 
+          h-20 w-32 md:h-28 md:w-48 lg:h-40 lg:w-80 
+          object-cover rounded-lg z-10
+          hidden md:block"
+        />
+
+
+        {/* Button Positioned at the Bottom */}
+        <button className="
+        bg-[#FF0000] hover:bg-[#C80606]
+        text-white text-md md:text-xl 
+        py-2 px-8 md:py-3 md:px-10 
+        absolute -bottom-6 
+        rounded-xl 
+        flex items-center gap-3 transition z-10">
+          Watch Now
+          <svg
+            role="img"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+            className="h-6 w-6 fill-white"
+          >
+            <title>YouTube</title>
+            <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+          </svg>
+        </button>
       </div>
 
-      {/* <div className="lg:flex lg:h-[48rem] lg:justify-end">
-        <div className="flex justify-center lg:justify-end pt-32 lg:pt-52">
-          <div className="w-8/12 text-left lg:text-left">
-            <p className="text-5xl mb-5 md:text-6xl lg:text-7xl">Geckogen</p>
-            <p className="md:text-2xl lg:text-xl mb-7">
-              Changing the mentality from “pet ownership“ to a “partnership” by focusing on the preservation of non-human species.
-            </p>
-            <p className="md:text-2xl lg:text-xl mb-7">
-              A partnership where we become guardians rather than owners by using science to improve conditions for all living things.
-            </p>
-            <p className={`${reenieBeanie.className} text-3xl mb-10`}>
-              Edgar A. Machuca Sahagun
-            </p>
-            <div className="whitespace-nowrap">
-              <Link
-                className="py-2 px-4 mr-4 cursor-pointer rounded-full w-28 bg-blue-500 text-white lg:text-lg"
-                href={"/shop"}
-              >
-                Shop Now
-              </Link>
-            </div>
-          </div>
-        </div>
-        <div className="lg:flex lg:items-center relative">
-          <div className="flex justify-end relative" style={{ right: '-200px' }}>
-            <img
-              src="/gecko-hero-bw.jpeg"
-              alt="Gecko Hero Image"
-              className="py-2 h-72 w-fit md:h-96 lg:w-[100rem] lg:h-auto"
-            />
-          </div>
-        </div>
-      </div> */}
+      <p className="
+      font-custom text-center 
+      text-lg md:text-2xl
+      px-10 md:px-20 
+      mb-4">
+        A partnership where we become guardians rather than owners by using science to improve
+        conditions for all living things.
+      </p>
+
+      <p className={`${reenieBeanie.className} 
+      text-2xl md:text-3xl 
+      mb-6 text-center
+      `}>
+        ~ Edgar A. Machuca Sahagun
+      </p>
+
+      <img
+        src="/geckoBlueHero.jpeg"
+        alt="Descriptive Alt Text"
+        className="
+        mx-auto mb-0
+        h-28 w-56
+        object-cover rounded-lg
+        md:hidden
+        relative
+        -left-0 top-6"
+        />
+
 
       {/* Science in your hands */}
-      <div className="h-[55rem] bg-black lg:bg-[url(/science-ball.gif)] lg:bg-cover lg:bg-center">
+      <div className="h-[55rem] bg-black lg:bg-[url(/GeckogenScienceBall.gif)] lg:bg-cover lg:bg-center">
         <div className="h-full flex flex-col justify-center items-center space-y-8 lg:bg-black/50">
           <div className="flex justify-center items-center">
             <div className="w-8/12 md:w-7/12 text-gray-200 lg:text-center lg:w-96">
@@ -93,17 +121,26 @@ export default function Home() {
               </p>
             </div>
           </div>
-          <div className="lg:hidden">
-            <img
-              className="object-cover h-[30rem] w-[30rem]"
-              src="/science-ball.gif"
-              alt=""
+
+          <div className="lg:hidden relative group">
+            {/* Transparent overlay div to block interactions */}
+            <div className="absolute inset-0 bg-transparent z-10"></div>
+
+            {/* Background image div to prevent direct access */}
+            <div
+              className="object-cover h-[30rem] w-[30rem] bg-center bg-cover"
+              style={{
+                backgroundImage: 'url(/GeckogenScienceBall.gif)',
+                pointerEvents: 'none',  // Disables all interactions with the image
+                userSelect: 'none'      // Prevents text/image selection
+              }}
+              onContextMenu={(e) => e.preventDefault()} // Disables right-click menu
             />
           </div>
         </div>
       </div>
 
-      {/* DNA Sequencing Project */}
+      { }
       <div className="bg-black lg:flex lg:h-[54rem]" id="DNA">
         <div className="flex justify-center pt-24 text-gray-200">
           <div className="w-8/12 md:w-8/12">
@@ -143,62 +180,6 @@ export default function Home() {
           />
         </div>
       </div>
-
-      {/*
-      {
-        // Featured Products 
-      }
-      <div className="py-14">
-        <div className="flex justify-center mt-4">
-          <div className="w-8/12 md:w-8/12 text-center">
-            <p className="text-5xl">Featured Geckos</p>
-          </div>
-        </div>
-        <div className="flex justify-center py-10">
-          <div className="w-8/12 md:w-10/12 flex flex-wrap justify-center gap-5 gap-y-12">
-            {
-              // Gecko 1
-            }
-            <ProductCard
-              productId="prod_P3dqsxunfez7bg"
-              productTitle="Full Pin Extreme C19"
-              productImage="https://files.stripe.com/links/MDB8YWNjdF8xTzIxRkFBSlRlTUwyOVpVfGZsX3Rlc3Rfc3hFN09OcUI4VE1TU0JLY3hHSEptb3pW00wPp8U5md"
-              productPrice={320}
-            />
-
-            {
-              // Gecko 2
-            }
-            <ProductCard
-              productId="prod_P3dFNDH77Hs7Og"
-              productTitle="Red Stripe G24"
-              productImage="https://files.stripe.com/links/MDB8YWNjdF8xTzIxRkFBSlRlTUwyOVpVfGZsX3Rlc3RfMjB3YW1zUUFwOVE2R3RLMnNoTkJZam1W002iG28foG"
-              productPrice={180}
-            />
-
-            {
-              // Gecko 3
-            }
-            <ProductCard
-              productId="prod_P3cqKug3rGhkgZ"
-              productTitle="Wide Back F G11"
-              productImage="https://files.stripe.com/links/MDB8YWNjdF8xTzIxRkFBSlRlTUwyOVpVfGZsX3Rlc3RfZmwwVnZLUmlCRFVYUXF5M0hjNHAxTm1Z008grQs0rE"
-              productPrice={450}
-            />
-          </div>
-        </div>
-        <div className="flex justify-center">
-          <div>
-            <Link
-              href={"/shop"}
-              className="py-2 px-4 mr-1 bg-blue-500 text-white rounded-full lg:text-lg"
-            >
-              Explore the catalog
-            </Link>
-          </div>
-        </div>
-      </div>
-    */}
 
       {/* Our Specimens */}
       <div className="bg-black md:h-[40rem] md:flex md:flex-row-reverse">
