@@ -91,7 +91,8 @@ export default function Home() {
 
       <p className={`${reenieBeanie.className} 
       text-2xl md:text-3xl 
-      mb-6 text-center
+      mb-10 md:mb-36
+      text-center
       `}>
         ~ Edgar A. Machuca Sahagun
       </p>
