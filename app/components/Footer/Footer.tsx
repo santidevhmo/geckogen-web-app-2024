@@ -3,9 +3,9 @@ import MorphMarketButton from "../MorphMarketBtn/MorphMarketBtn";
 
 const Footer = () => {
   return (
-    <footer className="py-10 px-20 border-t bg-[#F4F4F4]" id="footer">
+    <footer className="py-10 px-6 md:px-20 border-t bg-[#F4F4F4]" id="footer">
       <div className="md:flex justify-center">
-        <div className="md:text-center mt-4">
+        <div className="md:text-center text-center mt-4">
           <div>
             <p className="text-4xl mb-5">Contact us</p>
           </div>
@@ -18,19 +18,19 @@ const Footer = () => {
         </div>
       </div>
 
-      <div className="md:flex space-y-10 justify-between mb-20 items-center">
+      <div className="flex flex-col md:flex-row space-y-10 md:space-y-0 justify-between mb-20 items-center text-center">
         <div>
           <p>Geckogen</p>
           <p>San Jose, California, US</p>
         </div>
-        <div className="flex gap-4">
+        <div className="flex justify-center gap-4">
           <div className="flex items-center bg-black rounded-lg h-11 w-30">
             <Link href="https://www.morphmarket.com/" passHref>
               <button className="flex justify-center py-1.5 px-2 w-[100px] h-[35px]">
                 <img
                   src="/MorphMarketWhite.webp"
                   alt="Morph Market Logo"
-                  className="w-[full] h-full object-contain"
+                  className="w-full h-full object-contain"
                 />
               </button>
             </Link>
@@ -47,7 +47,7 @@ const Footer = () => {
           </div>
         </div>
       </div>
-      <div className="md:flex space-y-2 justify-between">
+      <div className="text-center md:flex md:justify-between md:space-y-2">
         <div>
           <p className="text-sm text-gray-400">
             Copyright © 2023 Geckogen. All rights reserved.

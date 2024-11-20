@@ -10,7 +10,9 @@ const LazyProductCard = React.lazy(() => import("../ProductCard/ProductCard"));
 
 const fetcher = async (url: string) => {
   const response = await fetch(url);
-  return response.json();
+  const data = await response.json();
+  console.log("Fetched Catalog Data:", data); // Log the entire catalog data
+  return data;
 };
 
 const Catalog = () => {
@@ -19,8 +21,16 @@ const Catalog = () => {
 
   const { data: catalog }: { data: Stripe.Product[] } = useSWR("/api/catalog", fetcher);
 
+  const productDescription = "Crested Gecko Female (VisualMono X Red Pin Phantom)";
+  const result = productDescription
+    .toLowerCase()
+    .replace(/_/g, "")
+    .includes("mono");
+
+  console.log(result); // Output: true
+
   useEffect(() => {
-    console.log("Catalog data:", catalog);
+    console.log("Full Catalog Data:", catalog); // Log the entire catalog data
     if (catalog) {
       filterItems();
     }
@@ -32,23 +42,59 @@ const Catalog = () => {
 
   function filterItems() {
     if (selectedFilters.length > 0) {
-      const tempItems = catalog.filter(product => {
-        const productCategory = product.metadata?.category;
-        const productSex = product.metadata?.sex;
+      console.log("Selected Filters:", selectedFilters); // Log currently selected filters
   
-        // Check if any selected filter matches the product's metadata
-        return selectedFilters.some(filter => {
-          const matchesCategory = filter.species ? filter.species === productCategory : true;
-          const matchesSex = filter.sex ? filter.sex === productSex : true;
-          return matchesCategory && matchesSex;
+      const tempItems = catalog.filter((product) => {
+        const productCategory = product.metadata?.category || product.metadata?.category; // Check category
+        const productSex = product.metadata?.sex || product.metadata?.sex; // Check sex
+        const productDescription = product.metadata?.description || product.description; // Check description
+  
+        console.log("Product Being Checked:", {
+          id: product.id,
+          category: productCategory,
+          sex: productSex,
+          description: productDescription,
         });
+  
+        const isMatch = selectedFilters.every((filter) => {
+          const matchesCategory = filter.species
+            ? filter.species === productCategory
+            : true;
+  
+          const matchesSex = filter.sex && filter.sex !== "Monochromatic"
+            ? filter.sex === productSex
+            : true;
+  
+          const matchesMonochromatic =
+            filter.species === "C (Crested) Species" && filter.sex === "Monochromatic"
+              ? productDescription &&
+                productDescription.toLowerCase().replace(/_/g, "").includes("mono")
+              : true;
+  
+          console.log("Filter Check:", {
+            filter,
+            matchesCategory,
+            matchesSex,
+            matchesMonochromatic,
+          });
+  
+          return matchesCategory && matchesSex && matchesMonochromatic;
+        });
+  
+        console.log("Does Product Match All Filters?", isMatch);
+        return isMatch;
       });
+  
+      console.log("Filtered Items:", tempItems); // Log the filtered products
       setFilteredItems(tempItems);
     } else {
+      console.log("No Filters Selected - Displaying Full Catalog");
       setFilteredItems(catalog);
     }
   }
   
+
+
 
   function getPriceFromProduct(product: Stripe.Product): number {
     const price = product.default_price as Stripe.Price;

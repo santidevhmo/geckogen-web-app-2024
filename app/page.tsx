@@ -60,24 +60,35 @@ export default function Home() {
 
 
         {/* Button Positioned at the Bottom */}
-        <button className="
-        bg-[#FF0000] hover:bg-[#C80606]
-        text-white text-md md:text-xl 
-        py-2 px-8 md:py-3 md:px-10 
-        absolute -bottom-6 
-        rounded-xl 
-        flex items-center gap-3 transition z-10">
-          Watch Now
-          <svg
-            role="img"
-            viewBox="0 0 24 24"
-            xmlns="http://www.w3.org/2000/svg"
-            className="h-6 w-6 fill-white"
-          >
-            <title>YouTube</title>
-            <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
-          </svg>
-        </button>
+        <a
+          href="https://youtube.com/@geckogen?si=9diEzIecBmuiPpcL"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="
+    absolute -bottom-6 
+    z-10
+  "
+        >
+          <button className="
+    bg-[#FF0000] hover:bg-[#C80606]
+    text-white text-md md:text-xl 
+    py-2 px-8 md:py-3 md:px-10 
+    rounded-xl 
+    flex items-center gap-3 transition
+  ">
+            Watch Now
+            <svg
+              role="img"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-6 w-6 fill-white"
+            >
+              <title>YouTube</title>
+              <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+            </svg>
+          </button>
+        </a>
+
       </div>
 
       <p className="
@@ -185,7 +196,7 @@ export default function Home() {
       {/* Our Specimens */}
       <div className="bg-black md:h-[40rem] md:flex md:flex-row-reverse">
         <div className="flex justify-center items-center">
-          <div className="w-8/12 text-gray-200 pt-20 md:pt-0 md:w-8/12 md:text-right lg:w-7/12">
+          <div className="w-8/12 text-gray-200 pt-20 md:pt-0 md:w-8/12 text-center md:text-right lg:w-7/12">
             <p className="text-5xl mb-5 md:text-6xl">Our Specimens</p>
             <p className="text-lg">
               We offer you a healthy high quality specimen, housed individually,
@@ -208,6 +219,7 @@ export default function Home() {
           />
         </div>
       </div>
+
     </div>
   );
 }

@@ -7,7 +7,7 @@ const FilterContent = () => {
       <Accordion
         title="Gecko Species"
         content={[
-          { title: "C (Crested) Species", subFilters: ["Male", "Female", "Unsexed"] },
+          { title: "C (Crested) Species", subFilters: ["Male", "Female", "Unsexed", "Monochromatic"] },
           { title: "C (Chahohua) Species", subFilters: ["Male", "Female", "Unsexed"] },
           { title: "G (Gargoyle) Species", subFilters: ["Male", "Female", "Unsexed"] },
           { title: "B (Blue Tongue Skink) Species", subFilters: ["Male", "Female", "Unsexed"] },
