@@ -61,12 +61,12 @@ const Catalog = () => {
             ? filter.species === productCategory
             : true;
   
-          const matchesSex = filter.sex && filter.sex !== "Monochromatic"
+          const matchesSex = filter.sex && filter.sex !== "Monochrome"
             ? filter.sex === productSex
             : true;
   
-          const matchesMonochromatic =
-            filter.species === "C (Crested) Species" && filter.sex === "Monochromatic"
+          const matchesMonochrome =
+            filter.species === "C (Crested) Species" && filter.sex === "Monochrome"
               ? productDescription &&
                 productDescription.toLowerCase().replace(/_/g, "").includes("mono")
               : true;
@@ -75,10 +75,10 @@ const Catalog = () => {
             filter,
             matchesCategory,
             matchesSex,
-            matchesMonochromatic,
+            matchesMonochrome,
           });
   
-          return matchesCategory && matchesSex && matchesMonochromatic;
+          return matchesCategory && matchesSex && matchesMonochrome;
         });
   
         console.log("Does Product Match All Filters?", isMatch);
