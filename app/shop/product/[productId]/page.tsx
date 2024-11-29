@@ -3,14 +3,29 @@ import Image from "next/image";
 import BuyButton from "./buyButton";
 
 const getProductData = async (productId: string) => {
-  const response = await fetch(
-    `${process.env.DOMAIN}/api/product?id=${productId}`
-  ,{ next: { revalidate: 86400 } });
-  if (!response.ok) {
-    throw new Error("Failed to fetch data");
-  }
+  try {
+    const response = await fetch(
+      `${process.env.DOMAIN}/api/product?id=${productId}`,
+      { next: { revalidate: 86400 } }
+    );
 
-  return response.json();
+    if (!response.ok) {
+      throw new Error(`Failed to fetch data: ${response.statusText}`);
+    }
+
+    return response.json();
+  } catch (error) {
+    console.error("Error fetching product data:", error);
+    throw error;
+  }
+};
+
+const getEmbeddableDriveUrl = (url: string) => {
+  const match = url.match(/\/file\/d\/([^/]+)\//);
+  if (match && match[1]) {
+    return `https://drive.google.com/uc?id=${match[1]}&export=download`;
+  }
+  return url; // If it doesn't match, return the original URL
 };
 
 const Product = async ({ params }: { params: { productId: string } }) => {
@@ -38,61 +53,79 @@ const Product = async ({ params }: { params: { productId: string } }) => {
 
         <div className="lg:flex lg:gap-10 lg:justify-center">
 
-          {/* Product Image */}
-          <div className="flex justify-center">
-            <Image
-              className="object-cover rounded-lg"
-              width={600}
-              height={600}
-              src={product.productImage[0]}
-              alt=""
-            />
+          {/* Media Section: Video or Image */}
+          <div className="flex justify-center mt-8">
+            {product.videoURL ? (
+              <iframe
+                src={product.videoURL}
+                width="380"
+                height="550"
+                allow="autoplay"
+                className="rounded-lg"
+              ></iframe>
+            ) : (
+              <Image
+                className="object-cover rounded-lg"
+                width={600}
+                height={600}
+                src={product.productImage[0]}
+                alt={product.productName}
+              />
+            )}
           </div>
 
           {/* Product Details */}
           <div className="flex flex-col items-center lg:w-[30rem] text-center space-y-8 mt-6 lg:mt-0">
-
             <div className="space-y-1">
               <h1 className="text-5xl">{product.productName}</h1>
-              {/* <p>${(product.productPrice)} USD</p> */}
             </div>
 
-            {/* Description Box */}
             <div className="text-base text-black bg-gray-100 px-8 py-4 rounded-2xl w-full">
               <p className="text-lg">{product.productDescription ?? "No description available"}</p>
             </div>
 
             {/* Hatched Date and Weight Boxes */}
-            <div style={{ marginTop: 12 }} className="grid grid-cols-1 md:grid-cols-2 gap-3 m-0 w-full">
-              <div className="text-base text-black bg-gray-100 px-8 py-4 rounded-2xl w-full">
-                <p className="text-sm text-gray-500">Hatched Date:</p>
-                <p className="text-lg">{product.hatchedDate ?? "N/A"}g</p>
-              </div>
-              <div className="text-base text-black bg-gray-100 px-8 py-4 rounded-2xl w-full">
-                <p className="text-sm text-gray-500">Weight:</p>
-                <p className="text-lg">{product.weight ?? "N/A"}</p>
-              </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-3 w-full">
+              {product.hatchedDate && product.hatchedDate !== "N/A" && product.hatchedDate !== "0" && (
+                <div className="text-base text-black bg-gray-100 px-8 py-4 rounded-2xl">
+                  <p className="text-sm text-gray-500">Hatched Date:</p>
+                  <p className="text-lg">{product.hatchedDate}</p>
+                </div>
+              )}
+              {product.weight && product.weight !== "N/A" && product.weight !== "0" && (
+                <div className="text-base text-black bg-gray-100 px-8 py-4 rounded-2xl">
+                  <p className="text-sm text-gray-500">Weight:</p>
+                  <p className="text-lg">{product.weight}</p>
+                </div>
+              )}
             </div>
 
             {/* Price Box */}
-            <div style={{ marginTop: 12 }} className="text-base text-black bg-gray-100 px-8 py-4 rounded-2xl w-full">
-              <p className="text-sm text-gray-500">Price:</p>
-              <p className="text-lg">${(product.productPrice / 100)} USD</p>
-            </div>
+            {product.productPrice > 0 && (
+              <div className="text-base text-black bg-gray-100 px-8 py-4 rounded-2xl w-full">
+                <p className="text-sm text-gray-500">Price:</p>
+                <p className="text-lg">${(product.productPrice / 100).toFixed(2)} USD</p>
+              </div>
+            )}
 
+
+            {/* Conditional Button */}
             <div className="pt-8 w-full">
-              <BuyButton product={product}/>
-              {/* <Link href={`/checkout/${product.productPriceId}`}>
-                <button className="py-3 w-full bg-orange-400 text-white text-lg rounded-md hover:bg-orange-500 transition-all duration-300 ease-in">
-                  Buy
-                </button>
-              </Link> */}
+              {product.productPrice > 0 ? (
+                <BuyButton product={product} />
+              ) : (
+                <a
+                  href="mailto:edgatron@comcast.net"
+                  className="block text-center text-white bg-orange-500 hover:bg-orange-400 px-6 py-4 rounded-md"
+                >
+                  Contact us via email to purchase
+                </a>
+              )}
             </div>
           </div>
         </div>
       </div>
     </div>
-
   );
 };
 

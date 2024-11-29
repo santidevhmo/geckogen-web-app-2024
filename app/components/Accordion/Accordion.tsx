@@ -1,35 +1,71 @@
-"use client";
-
 import { useState } from "react";
-import { useFiltersContext } from "../Filters/FiltersContext";
+import { useFiltersContext, FilterOption } from "../Filters/FiltersContext"; // Import FilterOption
 
 interface AccordionProps {
   title: string;
-  content?: string[];
+  content?: (string | { title: string; subFilters?: string[] })[];
 }
+
 const Accordion = (props: AccordionProps) => {
   const { title, content } = props;
   const { selectedFilters, setSelectedFilters } = useFiltersContext();
-
   const [isOpen, setIsOpen] = useState(true);
 
-  const handleFilterButtonClick = (selectedFilter: string) => {
-    if (selectedFilters.includes(selectedFilter)) {
-      let filters = selectedFilters.filter((el) => el !== selectedFilter);
-      setSelectedFilters(filters);
-    } else {
-      setSelectedFilters([...selectedFilters, selectedFilter]);
-    }
+  const handleFilterButtonClick = (filterOption: FilterOption) => {
+    setSelectedFilters((prevFilters) => {
+      console.log("Before Update - Selected Filters:", prevFilters); // Log current filters
+      console.log("Clicked Filter Option:", filterOption); // Log the filter being added/removed
+
+      const existingIndex = prevFilters.findIndex(
+        (filter) =>
+          filter.species === filterOption.species && filter.sex === filterOption.sex
+      );
+
+      if (existingIndex !== -1) {
+        const updatedFilters = prevFilters.filter((_, index) => index !== existingIndex);
+        console.log("After Removal - Selected Filters:", updatedFilters); // Log updated filters after removal
+        return updatedFilters;
+      }
+
+      if (filterOption.sex) {
+        const mainFilterIndex = prevFilters.findIndex(
+          (filter) => filter.species === filterOption.species && !filter.sex
+        );
+
+        if (mainFilterIndex !== -1) {
+          const newFilters = [...prevFilters];
+          newFilters[mainFilterIndex] = filterOption;
+          console.log("After Update (Adding Sub-Filter) - Selected Filters:", newFilters);
+          return newFilters;
+        }
+      }
+
+      if (filterOption.species && !filterOption.sex) {
+        const subFilterIndex = prevFilters.findIndex(
+          (filter) => filter.species === filterOption.species && filter.sex
+        );
+
+        if (subFilterIndex !== -1) {
+          const newFilters = [...prevFilters];
+          newFilters[subFilterIndex] = filterOption;
+          console.log("After Update (Replacing Sub-Filter) - Selected Filters:", newFilters);
+          return newFilters;
+        }
+      }
+
+      const newFilters = [...prevFilters, filterOption];
+      console.log("After Addition - Selected Filters:", newFilters); // Log filters after adding a new one
+      return newFilters;
+    });
   };
+
 
   return (
     <div className="mb-8">
       <div className="border-b pb-2">
         <div
           className="flex justify-between items-center cursor-pointer"
-          onClick={() => {
-            setIsOpen(!isOpen);
-          }}
+          onClick={() => setIsOpen(!isOpen)}
         >
           <div className="flex-1">{title}</div>
           <div>
@@ -44,21 +80,54 @@ const Accordion = (props: AccordionProps) => {
         {isOpen && content && (
           <div className="pt-3 pl-3">
             {content.map((filterOption, idx) => {
-              return (
-                <div className="py-1 space-x-2 text-base text-gray-600" key={idx}>
-                  <input
-                    className="cursor-pointer accent-black"
-                    type="checkbox"
-                    checked={selectedFilters.includes(filterOption)}
-                    id={filterOption}
-                    name={filterOption}
-                    onClick={() => {
-                      handleFilterButtonClick(filterOption)
-                    }}
-                  />
-                  <label>{filterOption}</label>
-                </div>
-              );
+              if (typeof filterOption === "string") {
+                return (
+                  <div key={idx} className="py-1 space-x-2 text-base text-gray-600">
+                    <input
+                      type="checkbox"
+                      checked={selectedFilters.some(filter => filter.species === filterOption)}
+                      onClick={() => handleFilterButtonClick({ species: filterOption })}
+                    />
+                    <label>{filterOption}</label>
+                  </div>
+                );
+              } else if (typeof filterOption === "object" && filterOption.title) {
+                return (
+                  <div key={idx} className="py-1 space-x-2 text-base text-gray-600">
+                    <input
+                      type="checkbox"
+                      checked={selectedFilters.some(filter => filter.species === filterOption.title)}
+                      onClick={() => handleFilterButtonClick({ species: filterOption.title })}
+                    />
+                    <label>{filterOption.title}</label>
+                    {filterOption.subFilters && (
+                      <div className="pl-4">
+                        {filterOption.subFilters.map((subFilter, subIdx) => (
+                          <div key={subIdx} className="py-1 space-x-2 text-base text-gray-600">
+                            <input
+                              type="checkbox"
+                              checked={selectedFilters.some(
+                                filter =>
+                                  filter.species === filterOption.title &&
+                                  filter.sex === subFilter
+                              )}
+                              onChange={() =>
+                                handleFilterButtonClick({
+                                  species: filterOption.title,
+                                  sex: subFilter,
+                                })
+                              }
+                            />
+                            <label>{subFilter}</label>
+                          </div>
+                        ))}
+
+                      </div>
+                    )}
+                  </div>
+                );
+              }
+              return null;
             })}
           </div>
         )}

@@ -2,33 +2,41 @@ import { NextRequest, NextResponse } from "next/server";
 import Stripe from "stripe";
 import { auth } from "@clerk/nextjs";
 
-const stripe = new Stripe(process.env.NEXT_PUBLIC_STRIPE_API_SECRET_KEY as string, {
+const stripe = new Stripe(process.env.STRIPE_API_SECRET_KEY as string, {
   typescript: true,
   apiVersion: "2023-10-16"
 })
 
 export async function POST(req: NextRequest) {
-  const { priceId } = await req.json()
-  const { userId } = auth();
+  try {
+    const { priceId } = await req.json();
+    const { userId } = auth();
 
-  const session = await stripe.checkout.sessions.create({
-    client_reference_id: userId as string,
-    ui_mode: 'embedded',
-    line_items: [
-      {
-        // Provide the exact Price ID (for example, pr_1234) of the product you want to sell
-        price: priceId,
-        quantity: 1,
+    if (!userId) {
+      return NextResponse.json({ error: "User not authenticated" }, { status: 401 });
+    }
+
+    const session = await stripe.checkout.sessions.create({
+      client_reference_id: userId,
+      ui_mode: 'embedded',
+      line_items: [
+        {
+          price: priceId,
+          quantity: 1,
+        },
+      ],
+      mode: 'payment',
+      return_url: `${process.env.DOMAIN}/return?session_id={CHECKOUT_SESSION_ID}`,
+      shipping_address_collection: {
+        allowed_countries: ["US"],
       },
-    ],
-    mode: 'payment',
-    return_url: `${process.env.DOMAIN}/return?session_id={CHECKOUT_SESSION_ID}`,
-    shipping_address_collection: {
-      allowed_countries: ["US"]
-    },
-  });
+    });
 
-  return NextResponse.json({clientSecret: session.client_secret});
+    return NextResponse.json({ clientSecret: session.client_secret, sessionId: session.id });
+  } catch (error) {
+    console.error("Error creating checkout session:", error);
+    return NextResponse.json({ error: "Failed to create checkout session" }, { status: 500 });
+  }
 }
 
 export async function GET(req: NextRequest) {

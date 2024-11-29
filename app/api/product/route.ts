@@ -21,7 +21,7 @@ export async function GET(req: NextRequest, res: NextResponse) {
       productDescription: product.description,
       hatchedDate: product.metadata.HatchedDate, // Retrieve Hatched Date from metadata
       weight: product.metadata.Weight, // Retrieve Weight from metadata
-      videoURL: product.metadata.VideoURL
+      videoURL: product.metadata.video // Ensure this matches your metadata field name in Stripe
     });
   } catch (error) {
     console.error("Error fetching product:", error);

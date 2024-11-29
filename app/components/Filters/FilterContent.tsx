@@ -3,19 +3,21 @@ import Accordion from "../Accordion/Accordion";
 const FilterContent = () => {
   return (
     <div className="w-full">
-      <Accordion
-        title="DNA Products"
-        content={["Fenotype Test", "Genotype Test", "Sexing Test"]}
-      />
+      <Accordion title="Gecko Food" content={["Complete Meal Formula"]} />
       <Accordion
         title="Gecko Species"
         content={[
-                  "Correlophus ciliatus (Crested Gecko)", 
-                  "Rhacodactylus auriculatus (Gargoyle gecko)", 
-                  "Mniarogekko (Chahoua)"]}
+          { title: "C (Crested) Species", subFilters: ["Male", "Female", "Unsexed", "Monochrome"] },
+          { title: "C (Chahohua) Species", subFilters: ["Male", "Female", "Unsexed"] },
+          { title: "G (Gargoyle) Species", subFilters: ["Male", "Female", "Unsexed"] },
+          { title: "B (Blue Tongue Skink) Species", subFilters: ["Male", "Female", "Unsexed"] },
+        ]}
       />
-      <Accordion title="Microfauna" content={["Isopods"]} />
-      <Accordion title="Others" content={["Apparel", "Complete Meal Formula"]} />
+      <Accordion
+        title="Microfauna"
+        content={["Isopods", "Microfauna", { title: "Springtail" }]}
+      />
+      <Accordion title="Apparel" content={["T-shirt", "Hat"]} />
     </div>
   );
 };
