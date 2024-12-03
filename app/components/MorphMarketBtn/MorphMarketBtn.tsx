@@ -4,7 +4,7 @@ import Link from 'next/link';
 const MorphMarketButton = () => {
     return (
         <div className="relative group inline-block">
-            <Link href="https://www.morphmarket.com/" passHref>
+            <Link href="https://www.morphmarket.com/stores/edgatron/" passHref>
                 <button className="flex border-2 border-black rounded-lg py-1.5 px-2 justify-center" style={{ width: '100px', height: '35px' }}>
                     <Image
                         src="/morph-market-logo.webp"
