@@ -30,7 +30,6 @@ const getEmbeddableDriveUrl = (url: string) => {
 
 const Product = async ({ params }: { params: { productId: string } }) => {
   const product = await getProductData(params.productId);
-  console.log(product);
 
   return (
     <div className="pt-24 pb-14 flex justify-center">

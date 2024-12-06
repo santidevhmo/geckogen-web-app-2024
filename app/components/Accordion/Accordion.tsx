@@ -13,8 +13,6 @@ const Accordion = (props: AccordionProps) => {
 
   const handleFilterButtonClick = (filterOption: FilterOption) => {
     setSelectedFilters((prevFilters) => {
-      console.log("Before Update - Selected Filters:", prevFilters); // Log current filters
-      console.log("Clicked Filter Option:", filterOption); // Log the filter being added/removed
 
       const existingIndex = prevFilters.findIndex(
         (filter) =>
@@ -23,7 +21,6 @@ const Accordion = (props: AccordionProps) => {
 
       if (existingIndex !== -1) {
         const updatedFilters = prevFilters.filter((_, index) => index !== existingIndex);
-        console.log("After Removal - Selected Filters:", updatedFilters); // Log updated filters after removal
         return updatedFilters;
       }
 
@@ -35,7 +32,6 @@ const Accordion = (props: AccordionProps) => {
         if (mainFilterIndex !== -1) {
           const newFilters = [...prevFilters];
           newFilters[mainFilterIndex] = filterOption;
-          console.log("After Update (Adding Sub-Filter) - Selected Filters:", newFilters);
           return newFilters;
         }
       }
@@ -48,13 +44,11 @@ const Accordion = (props: AccordionProps) => {
         if (subFilterIndex !== -1) {
           const newFilters = [...prevFilters];
           newFilters[subFilterIndex] = filterOption;
-          console.log("After Update (Replacing Sub-Filter) - Selected Filters:", newFilters);
           return newFilters;
         }
       }
 
       const newFilters = [...prevFilters, filterOption];
-      console.log("After Addition - Selected Filters:", newFilters); // Log filters after adding a new one
       return newFilters;
     });
   };
