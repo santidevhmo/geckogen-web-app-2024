@@ -13,24 +13,15 @@ interface Orders {
 }
 
 const getOrders = async (userID: string) => {
-  console.log("Fetching orders for user:", userID); // Debug: Check userID
   const response = await fetch(
-    `https://api-jtnmag5rtq-uc.a.run.app/api/orders/${userID}`
+    `https://api-jtnmag5rtq-uc.a.run.app/api/orders/${userID}` // change URL when backend deployed
   );
-
   if (!response.ok) {
-    console.error("Failed to fetch orders:", response.statusText); // Debug: Log errors
     throw new Error("Failed to fetch data");
   }
 
-  const data = await response.json();
-  console.log("Fetched orders:", data); // Debug: Check the response data
-  return data;
+  return response.json();
 };
-
-const { userId } = auth();
-console.log("Authenticated user ID:", userId); // Debug: Check if userId is valid
-
 
 const MyOrders = async () => {
   const { userId } = auth();
