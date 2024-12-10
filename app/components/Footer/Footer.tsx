@@ -25,7 +25,7 @@ const Footer = () => {
         </div>
         <div className="flex justify-center gap-4">
           <div className="flex items-center bg-black rounded-lg h-11 w-30">
-            <Link href="https://www.morphmarket.com/" passHref>
+            <Link href="https://www.morphmarket.com/stores/edgatron/" passHref>
               <button className="flex justify-center py-1.5 px-2 w-[100px] h-[35px]">
                 <img
                   src="/MorphMarketWhite.webp"
