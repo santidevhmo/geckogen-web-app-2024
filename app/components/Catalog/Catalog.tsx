@@ -11,7 +11,6 @@ const LazyProductCard = React.lazy(() => import("../ProductCard/ProductCard"));
 const fetcher = async (url: string) => {
   const response = await fetch(url);
   const data = await response.json();
-  console.log("Fetched Catalog Data:", data); // Log the entire catalog data
   return data;
 };
 
@@ -27,10 +26,7 @@ const Catalog = () => {
     .replace(/_/g, "")
     .includes("mono");
 
-  console.log(result); // Output: true
-
   useEffect(() => {
-    console.log("Full Catalog Data:", catalog); // Log the entire catalog data
     if (catalog) {
       filterItems();
     }
@@ -42,19 +38,11 @@ const Catalog = () => {
 
   function filterItems() {
     if (selectedFilters.length > 0) {
-      console.log("Selected Filters:", selectedFilters); // Log currently selected filters
   
       const tempItems = catalog.filter((product) => {
         const productCategory = product.metadata?.category || product.metadata?.category; // Check category
         const productSex = product.metadata?.sex || product.metadata?.sex; // Check sex
         const productDescription = product.metadata?.description || product.description; // Check description
-  
-        console.log("Product Being Checked:", {
-          id: product.id,
-          category: productCategory,
-          sex: productSex,
-          description: productDescription,
-        });
   
         const isMatch = selectedFilters.every((filter) => {
           const matchesCategory = filter.species
@@ -71,24 +59,14 @@ const Catalog = () => {
                 productDescription.toLowerCase().replace(/_/g, "").includes("mono")
               : true;
   
-          console.log("Filter Check:", {
-            filter,
-            matchesCategory,
-            matchesSex,
-            matchesMonochrome,
-          });
-  
           return matchesCategory && matchesSex && matchesMonochrome;
         });
   
-        console.log("Does Product Match All Filters?", isMatch);
         return isMatch;
       });
   
-      console.log("Filtered Items:", tempItems); // Log the filtered products
       setFilteredItems(tempItems);
     } else {
-      console.log("No Filters Selected - Displaying Full Catalog");
       setFilteredItems(catalog);
     }
   }
