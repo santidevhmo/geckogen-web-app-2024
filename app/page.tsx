@@ -42,7 +42,7 @@ export default function Home() {
         leading-tight text-center text-white 
         px-10 py-12 md:py-12 lg:py-32 z-10 
         ">
-          Changing the mentality from “pet ownership” to a “partnership” by focusing on the
+          Changing the mentality from "companion ownership” to a “partnership” by focusing on the
           preservation of non-human species.
         </h1>
 
@@ -201,7 +201,7 @@ export default function Home() {
             <p className="text-lg">
               We offer you a healthy high quality specimen, housed individually,
               but handled often. We are committed to ensure a long lasting
-              relationship between you and your pet.
+              relationship between you and your Companion.
             </p>
             <br />
             <p className="text-lg">

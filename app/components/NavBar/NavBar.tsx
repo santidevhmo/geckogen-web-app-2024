@@ -30,39 +30,46 @@ const NavBar = () => {
   }, []);
 
   return (
-    <nav className="fixed w-full z-20 bg-white border-b border-gray-200">
-      <div className="flex items-center justify-between p-5">
-        <HomeLogo setToggle={setToggle} />
-        <div className="lg:hidden flex items-center space-x-6">
-          {isSignedIn && <p>Hi {user.firstName}</p>}
-          <HamburguerBttn toggle={toggle} setToggle={setToggle} />
-        </div>
-
-        {isLoaded ? (
-          <div className="hidden items-center space-x-4 lg:flex">
-            <NavigationLinks />
-            {isSignedIn ? (
-              <div className="flex space-x-4">
-                <p className="text-gray-500">Hi {user.firstName}</p>
-                <SignOutButton>
-                  <div>
-                    <Link
-                      href={"/"}
-                      className="py-2 px-4 border border-black rounded-full"
-                    >
-                      Sign Out
-                    </Link>
-                  </div>
-                </SignOutButton>
-              </div>
-            ) : (
-              <AccessBttns setToggle={setToggle} />
-            )}
-          </div>
-        ) : <UserAndSignOutButtonSkeleton/>}
+    <>
+      <div className="infinite-banner">
+        <span>FREE SHIPPING INCLUDED ON ALL PRODUCTS</span>
       </div>
-      <HamburguerMenu toggle={toggle} setToggle={setToggle} />
-    </nav>
+      <nav className="w-full bg-white border-b border-gray-200">
+        <div className="flex items-center justify-between p-5">
+          <HomeLogo setToggle={setToggle} />
+          <div className="lg:hidden flex items-center space-x-6">
+            {isSignedIn && <p>Hi {user.firstName}</p>}
+            <HamburguerBttn toggle={toggle} setToggle={setToggle} />
+          </div>
+
+          {isLoaded ? (
+            <div className="hidden items-center space-x-4 lg:flex">
+              <NavigationLinks />
+              {isSignedIn ? (
+                <div className="flex space-x-4">
+                  <p className="text-gray-500">Hi {user.firstName}</p>
+                  <SignOutButton>
+                    <div>
+                      <Link
+                        href={"/"}
+                        className="py-2 px-4 border border-black rounded-full"
+                      >
+                        Sign Out
+                      </Link>
+                    </div>
+                  </SignOutButton>
+                </div>
+              ) : (
+                <AccessBttns setToggle={setToggle} />
+              )}
+            </div>
+          ) : (
+            <UserAndSignOutButtonSkeleton />
+          )}
+        </div>
+        <HamburguerMenu toggle={toggle} setToggle={setToggle} />
+      </nav>
+    </>
   );
 };
 

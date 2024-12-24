@@ -12,7 +12,7 @@ export default function Blog() {
                         Gecko Species
                     </p>
                     <p className='bg-orange-200 text-black text-xs font-regular py-1.5 px-4 rounded-full'>
-                        Exotic Pets
+                        Exotic Companions
                     </p>
                     <p className='bg-orange-200 text-black text-xs font-regular py-1.5 px-4 rounded-full'>
                         Genetic Research

@@ -14,6 +14,25 @@ body {
   font-style: normal;
 }
 
+/* Free Shipping Banner */
+.infinite-banner {
+  white-space: nowrap;
+  overflow: hidden;
+  top: 0; /* Stick to the top */
+  background-color: #000; /* Black background */
+  color: #fff; /* White text */
+  font-size: 0.75rem; /* Text font 1/2 smaller */
+  padding: 0.5rem 0;
+  z-index: 1000; /* Ensure it stays above other elements */
+  text-align: center; /* Center the text */
+}
+
+.infinite-banner span {
+  display: inline-block;
+  padding-left: 0; /* Remove padding */
+  animation: none; /* Remove animation */
+}
+
 
 /* Add more font-face rules as needed for each style */
 

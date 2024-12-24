@@ -25,7 +25,7 @@ const ProductCard = ({ productId, productImage, productTitle, productPrice }: Pr
         <p className="text-base font-medium">{productTitle}</p>
         {/* Conditional rendering for price */}
         <p className="text-sm font-bold">
-          {productPrice > 0 ? `$${productPrice.toFixed(2)} USD` : "CONTACT US VIA EMAIL"}
+          {productPrice > 0 ? `$${productPrice.toFixed(2)} USD` : "CONTACT US FOR MORE INFORMATION"}
         </p>
       </div>
     </Link>
