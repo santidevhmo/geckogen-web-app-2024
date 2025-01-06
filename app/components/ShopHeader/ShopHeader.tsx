@@ -16,7 +16,7 @@ const ShopHeader = (props: ShopHeaderProps) => {
   };
 
   return (
-    <div className="fixed w-full z-10 h-16 bg-white border-t flex items-center justify-between px-6 mt-[4.5rem]">
+    <div className="static w-full z-10 h-16 bg-white border-t flex items-center justify-between px-6 mt-[4.5rem]">
       <div>
         <p className="text-2xl lg:text-3xl">Shop</p>
       </div>
