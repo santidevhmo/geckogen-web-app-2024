@@ -2,7 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import BuyButtonSVG from "../../../../public/buyButton.svg";
 
-// Declaring this to fix error "Binding element 'product' implicitly has an 'any' type.ts(7031)"
+// ✅ Extended Product interface to include metadata
 interface Product {
   productPriceId: string;
   productImage: string[];
@@ -11,15 +11,23 @@ interface Product {
   hatchedDate?: string;
   weight?: string;
   productPrice: number;
+  metadata?: {
+    link?: string;
+    [key: string]: any;
+  };
 }
+
 interface BuyButtonProps {
   product: Product;
 }
 
-export default function BuyButton({ product } : BuyButtonProps) {
+export default function BuyButton({ product }: BuyButtonProps) {
+  const fallbackUrl = "https://www.morphmarket.com/stores/edgatron/";
+  const productLink = product?.metadata?.link?.trim() || fallbackUrl;
+
   return (
     <div className="pt-8 w-full relative">
-      <Link href={`/checkout/${product.productPriceId}`}>
+      <Link href={productLink}>
         <div className="w-full relative hover:opacity-80">
           <Image
             src={BuyButtonSVG}
