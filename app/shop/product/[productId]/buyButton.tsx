@@ -25,10 +25,16 @@ export default function BuyButton({ product }: BuyButtonProps) {
   
   const fallbackUrl = "https://www.morphmarket.com/stores/edgatron/";
   const rawLink = product?.metadata?.link;
+
+  // ✅ Safe debug logging that shows up in deploy logs
+  console.log("📦 BuyButton loaded — metadata:", JSON.stringify(product?.metadata));
+  console.log("🔗 Raw link value:", rawLink);
+  
   const productLink =
     typeof rawLink === "string" && rawLink.trim().startsWith("http")
       ? rawLink.trim()
       : fallbackUrl;
+  
   
   return (
     <div className="pt-8 w-full relative">
