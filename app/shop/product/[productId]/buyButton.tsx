@@ -22,11 +22,13 @@ interface BuyButtonProps {
 }
 
 export default function BuyButton({ product }: BuyButtonProps) {
+  
   const fallbackUrl = "https://www.morphmarket.com/stores/edgatron/";
-  const productLink = product?.metadata?.link?.trim() || fallbackUrl;
-
-  console.log("Product metadata:", product.metadata);
-  console.log("Resolved link:", product?.metadata?.link?.trim());
+  const rawLink = product?.metadata?.link;
+  const productLink =
+    typeof rawLink === "string" && rawLink.trim().startsWith("http")
+      ? rawLink.trim()
+      : fallbackUrl;
 
   return (
     <div className="pt-8 w-full relative">
