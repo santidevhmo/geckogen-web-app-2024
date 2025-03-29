@@ -30,6 +30,12 @@ export default function BuyButton({ product }: BuyButtonProps) {
       ? rawLink.trim()
       : fallbackUrl;
 
+  useEffect(() => {
+    console.log("Product metadata:", product.metadata);
+    console.log("Resolved link:", product?.metadata?.link?.trim());
+    console.log("📦 Product metadata:", product.metadata);
+  }, []);
+
   return (
     <div className="pt-8 w-full relative">
       <Link href={productLink}>
