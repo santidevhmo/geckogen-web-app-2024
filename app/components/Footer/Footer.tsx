@@ -41,7 +41,7 @@ const Footer = () => {
             </a>
           </div> */}
           <div className="flex bg-black w-auto h-auto rounded-lg items-center px-5">
-            <a className="text-white" href={"https://www.facebook.com/Geckogenlabs"} target="_blank">
+            <a className="text-white" href={"mailto:geckogenetics@gmail.com"} target="_blank">
               Send us an email
             </a>
           </div>
