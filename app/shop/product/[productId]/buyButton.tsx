@@ -29,13 +29,6 @@ export default function BuyButton({ product }: BuyButtonProps) {
     typeof rawLink === "string" && rawLink.trim().startsWith("http")
       ? rawLink.trim()
       : fallbackUrl;
-
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      console.log("🧪 BuyButton mounted with product metadata:", product?.metadata);
-      console.log("🔗 Resolved link:", product?.metadata?.link);
-    }
-  }, [product]);
   
   return (
     <div className="pt-8 w-full relative">
