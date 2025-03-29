@@ -34,9 +34,6 @@ const Product = async ({ params }: { params: { productId: string } }) => {
 
   return (
     <div>
-      <div className="infinite-banner">
-        <span>FREE SHIPPING INCLUDED ON ALL PRODUCTS</span>
-      </div>
       <div className="pt-24 pb-14 flex justify-center">
         <div className="px-4 w-full max-w-[30rem] lg:max-w-[55rem] mx-auto">
           <div className="mb-8 text-blue-500 w-32 py-1 hover:bg-gray-100 rounded-md">
@@ -117,7 +114,7 @@ const Product = async ({ params }: { params: { productId: string } }) => {
                   <BuyButton product={product} />
                 ) : (
                   <a
-                    href="mailto:edgatron@comcast.net"
+                    href="https://www.morphmarket.com/stores/edgatron/"
                     className="block text-center text-white font-bold bg-orange-500 hover:bg-orange-400 px-6 py-4 rounded-md"
                   >
                     CONTACT US FOR MORE INFORMATION
