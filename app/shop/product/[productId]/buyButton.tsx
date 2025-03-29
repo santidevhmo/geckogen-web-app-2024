@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import BuyButtonSVG from "../../../../public/buyButton.svg";
+import { useEffect } from "react";
 
 // ✅ Extended Product interface to include metadata
 interface Product {
