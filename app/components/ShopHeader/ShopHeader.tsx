@@ -16,9 +16,9 @@ const ShopHeader = (props: ShopHeaderProps) => {
   };
 
   return (
-    <div className="static w-full z-10 h-16 bg-white border-t flex items-center justify-between px-6 mt-[4.5rem]">
+    <div className="static w-full z-10 h-16 bg-white flex items-center justify-between px-6 mt-[4rem]">
       <div>
-        <p className="text-2xl lg:text-3xl">Shop</p>
+        <p className="text-2xl lg:text-3xl ml-2 font-semibold">Available Specimens</p>
       </div>
       <div className="flex items-center gap-4 lg:hidden mt-1">
         <button
