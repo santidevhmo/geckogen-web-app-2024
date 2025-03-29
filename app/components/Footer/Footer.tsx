@@ -45,11 +45,12 @@ const Footer = () => {
               Send us an email
             </a>
           </div>
+        </div>
       </div>
       <div className="text-center md:flex md:justify-between md:space-y-2">
         <div>
           <p className="text-sm text-gray-400">
-            Copyright © 2000 Geckogen. All rights reserved.
+            Copyright © 2023 Geckogen. All rights reserved.
           </p>
         </div>
       </div>
