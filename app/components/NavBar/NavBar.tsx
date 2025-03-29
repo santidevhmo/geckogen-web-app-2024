@@ -3,15 +3,13 @@
 import { useState, useEffect } from "react";
 import HomeLogo from "./utils/HomeLogo";
 import NavigationLinks from "./utils/NavigationLinks";
-import AccessBttns from "./utils/AccessBttns";
-import { SignOutButton, useUser } from "@clerk/nextjs";
 import HamburguerBttn from "./utils/HamburguerBttn";
 import HamburguerMenu from "./utils/HamburguerMenu";
-import Link from "next/link";
+import { useUser } from "@clerk/nextjs";
 import UserAndSignOutButtonSkeleton from "../Skeleton/UserAndSignOutButtonSkeleton";
 
 const NavBar = () => {
-  const { isLoaded, isSignedIn, user } = useUser();
+  const { isLoaded } = useUser();
   const [toggle, setToggle] = useState(false);
 
   useEffect(() => {
@@ -38,30 +36,12 @@ const NavBar = () => {
         <div className="flex items-center justify-between p-5">
           <HomeLogo setToggle={setToggle} />
           <div className="lg:hidden flex items-center space-x-6">
-            {isSignedIn && <p>Hi {user.firstName}</p>}
             <HamburguerBttn toggle={toggle} setToggle={setToggle} />
           </div>
 
           {isLoaded ? (
             <div className="hidden items-center space-x-4 lg:flex">
               <NavigationLinks />
-              {isSignedIn ? (
-                <div className="flex space-x-4">
-                  <p className="text-gray-500">Hi {user.firstName}</p>
-                  <SignOutButton>
-                    <div>
-                      <Link
-                        href={"/"}
-                        className="py-2 px-4 border border-black rounded-full"
-                      >
-                        Sign Out
-                      </Link>
-                    </div>
-                  </SignOutButton>
-                </div>
-              ) : (
-                <AccessBttns setToggle={setToggle} />
-              )}
             </div>
           ) : (
             <UserAndSignOutButtonSkeleton />
