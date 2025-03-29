@@ -175,7 +175,7 @@ export default function Home() {
               <div className="whitespace-nowrap">
                 <Link
                   className="py-4 px-6 mr-4 cursor-pointer rounded-full w-28 bg-blue-500 hover:bg-blue-400 text-white lg:text-lg text-center font-bold"
-                  href={"https://www.instagram.com/geckogen"}
+                  href={"https://www.morphmarket.com/stores/edgatron/"}
                   target="_blank"
                 >
                   CONTACT US FOR MORE INFORMATION
