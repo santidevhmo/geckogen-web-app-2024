@@ -32,7 +32,7 @@ const NavBar = () => {
   return (
     <>
       <div className="infinite-banner">
-        <span>FREE SHIPPING INCLUDED ON ALL PRODUCTS</span>
+        <span className="text-lg mt-2 mb-2">FREE SHIPPING INCLUDED ON ALL PRODUCTS</span>
       </div>
       <nav className="w-full bg-white border-b border-gray-200">
         <div className="flex items-center justify-between p-5">
